@@ -28,9 +28,7 @@ export const initAnimations = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (!prefersReducedMotion) {
-      document.addEventListener('DOMContentLoaded', initScrollReveal);
-      
-      // If DOM is already loaded
+      // If DOM is still loading, wait for it. Otherwise, initialize immediately.
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initScrollReveal);
       } else {

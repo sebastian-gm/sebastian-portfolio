@@ -8,6 +8,7 @@ import EducationSection from '@/components/EducationSection';
 import ContactSection from '@/components/ContactSection';
 import BackToTop from '@/components/BackToTop';
 import { initAnimations } from '@/utils/animations';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 const Index = () => {
   useEffect(() => {
@@ -80,7 +81,9 @@ const Index = () => {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
-        <SkillsSection />
+        <ErrorBoundary>
+          <SkillsSection />
+        </ErrorBoundary>
         <EducationSection />
         <ContactSection />
       </main>

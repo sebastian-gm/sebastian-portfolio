@@ -2,24 +2,21 @@ const EducationSection = () => {
   const education = [
     {
       school: 'Douglas College',
-      degree: 'Postgrad Diploma, Computer & Information Systems',
+      degree: 'Postgraduate Diploma in Computer & Information Systems',
       country: 'Canada',
-      period: '2022–2023',
-      flag: '🇨🇦'
+      period: '2022–2023'
     },
     {
       school: 'European University of Madrid',
-      degree: 'MBA',
+      degree: 'Master of Business Administration (MBA)',
       country: 'Spain',
-      period: '2016–2017',
-      flag: '🇪🇸'
+      period: '2016–2017'
     },
     {
       school: 'Andres Bello University',
-      degree: 'BSc Economics (Finance & Statistics)',
+      degree: 'BSc Economics (Concentration in Finance & Statistics)',
       country: 'Chile',
-      period: '2012–2015',
-      flag: '🇨🇱'
+      period: '2012–2015'
     }
   ];
 
@@ -35,7 +32,6 @@ const EducationSection = () => {
           {education.map((edu, index) => (
             <div key={index} className="reveal card-glass rounded-lg p-6">
               <div className="flex items-start gap-4">
-                <div className="text-3xl">{edu.flag}</div>
                 <div className="flex-1">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
