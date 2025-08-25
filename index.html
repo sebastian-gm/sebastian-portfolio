@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sebastian Gonzalez — Data Engineer | ETL, MLOps & Cloud Data Platforms</title>
+    <meta name="description" content="Data Engineer with 5+ years experience building scalable ETL/ELT pipelines, MLOps systems, and cloud data platforms on AWS & Azure. Expertise in Spark, Airflow, and Databricks." />
+    <meta name="author" content="Sebastian Gonzalez" />
+    <meta name="keywords" content="Data Engineer, ETL, MLOps, AWS, Azure, Databricks, Spark, Airflow, Data Pipeline, Machine Learning, Python" />
+    <link rel="canonical" href="https://sebastiangonzalez.dev" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sebastian Gonzalez — Data Engineer" />
+    <meta property="og:description" content="Data Engineer specializing in scalable data pipelines and production-grade MLOps systems." />
+    <meta property="og:image" content="/assets/profile.png" />
+    <meta property="og:url" content="https://sebastiangonzalez.dev" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sebastian Gonzalez — Data Engineer" />
+    <meta name="twitter:description" content="Data Engineer specializing in scalable data pipelines and production-grade MLOps systems." />
+    <meta name="twitter:image" content="/assets/profile.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      // TODO: Replace with your EmailJS Public Key, Service ID, Template ID
+      const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+      const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+      const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+      window.addEventListener('load', () => {
+        if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+          emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+        }
+        
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('contact-status');
+
+        if (form) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (status) status.textContent = 'Sending...';
+
+            // Map form inputs to EmailJS expected fields
+            const formData = {
+              from_name: form.name.value,
+              reply_to: form.email.value,
+              message: form.message.value,
+              to_email: 'sebastiangm.dev@gmail.com'
+            };
+
+            try {
+              if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData);
+                form.reset();
+                if (status) status.textContent = 'Thanks! I\'ll get back to you soon.';
+              } else {
+                // Fallback when EmailJS is not configured
+                if (status) {
+                  status.innerHTML = 'EmailJS not configured. Please email me directly at <a href="mailto:sebastiangm.dev@gmail.com" style="color: #60a5fa;">sebastiangm.dev@gmail.com</a>.';
+                }
+              }
+            } catch (err) {
+              console.error(err);
+              if (status) {
+                status.innerHTML = 'Error sending. Please email me directly at <a href="mailto:sebastiangm.dev@gmail.com" style="color: #60a5fa;">sebastiangm.dev@gmail.com</a>.';
+              }
+            }
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
