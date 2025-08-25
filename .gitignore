@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Bun lockfile (optional - commit for reproducible installs)
+# bun.lockb
+
+# build output
+dist/
+build/
+coverage/
+
+# env
+.env
+.env.*
+.env.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# keys
+*.pem
+*.key
+*.p12
+*.crt
+*.env.json
+*.service-account.json
