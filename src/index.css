@@ -218,3 +218,10 @@
     filter: drop-shadow(0 0 6px hsl(var(--brand) / .6));
   }
 }
+
+/* caret for the Typewriter component */
+@keyframes caret-blink { 50% { opacity: 0; } }
+.type-caret {
+  display: inline-block;
+  animation: caret-blink 1s steps(1) infinite;
+}
