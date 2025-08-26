@@ -1,79 +1,81 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
+  SiPython,
   SiApachespark,
-  SiApachekafka,
+  SiSnowflake,
   SiApacheairflow,
+  SiAmazonaws,
+  SiMicrosoftazure,
   SiDatabricks,
   SiDbt,
-  SiMlflow,
+  SiGit,
   SiDocker,
-  SiKubernetes,
-  SiMicrosoftazure,   
-  SiAzuredevops,      
+  SiMongodb,
   SiPostgresql,
-  SiSnowflake,
-  SiPython,
-  SiTerraform,
-  SiGooglecloud,
 } from "react-icons/si";
-import { DiAws } from "react-icons/di";
-import { OrbitingCircles } from "./OrbitingCircles";
 
+type Brand = {
+  label: string;
+  Icon: React.ComponentType<{ className?: string }>;
+  brandHsl: string; // "H S L" (no hsl())
+};
 
-const TextBadge = ({ children }: { children: React.ReactNode }) => (
-  <span className="inline-flex items-center justify-center h-9 w-auto px-2 rounded-full border border-white/20 text-xs font-semibold text-white/90 bg-background">
-    {children}
-  </span>
-);
-
-export default function SkillsSection() {
-  const outerIcons = [
-    <SiApachespark key="spark" className="text-orange-500" />,
-    <SiApachekafka key="kafka" className="text-zinc-200" />,
-    <SiApacheairflow key="airflow" className="text-sky-400" />,
-    <SiDatabricks key="databricks" className="text-rose-500" />,
-    <SiDbt key="dbt" className="text-orange-400" />,
-    <SiMlflow key="mlflow" className="text-sky-500" />,
-    <TextBadge key="ge">GE</TextBadge>,
-    <TextBadge key="iceberg">Iceberg</TextBadge>,
-    <SiDocker key="docker" className="text-blue-400" />,
-    <SiKubernetes key="kubernetes" className="text-blue-400" />,
-  ];
-
-  const innerIcons = [
-    <DiAws key="aws" className="text-amber-400" />,
-    <SiMicrosoftazure key="azure" className="text-sky-500" />,
-    <SiAzuredevops key="azdo" className="text-sky-400" />,
-    <SiGooglecloud key="gcp" className="text-sky-400" />,
-    <SiPostgresql key="postgres" className="text-cyan-400" />,
-    <SiSnowflake key="snowflake" className="text-sky-300" />,
-    <SiTerraform key="terraform" className="text-violet-400" />,
-    <SiPython key="python" className="text-yellow-400" />,
-    <TextBadge key="sql">SQL</TextBadge>,
-    <TextBadge key="delta">Δ Lake</TextBadge>,
+const BRANDS: Brand[] = [
+  { label: "Python",        Icon: SiPython,         brandHsl: "48 96% 54%"  }, // yellow
+  { label: "Apache Spark",  Icon: SiApachespark,    brandHsl: "24 95% 55%"  }, // orange
+  { label: "Snowflake",     Icon: SiSnowflake,      brandHsl: "199 86% 64%" },
+  { label: "Airflow",       Icon: SiApacheairflow,  brandHsl: "191 94% 49%" },
+  { label: "AWS",           Icon: SiAmazonaws,      brandHsl: "40 96% 55%"  },
+  { label: "Azure",         Icon: SiMicrosoftazure, brandHsl: "201 96% 54%" },
+  { label: "Databricks",    Icon: SiDatabricks,     brandHsl: "352 84% 60%" },
+  { label: "dbt",           Icon: SiDbt,            brandHsl: "17 88% 59%"  },
+  { label: "Git",           Icon: SiGit,            brandHsl: "14 90% 55%"  },
+  { label: "Docker",        Icon: SiDocker,         brandHsl: "207 83% 60%" },
+  { label: "MongoDB",       Icon: SiMongodb,        brandHsl: "142 70% 45%" },
+  { label: "SQL",           Icon: SiPostgresql,     brandHsl: "201 35% 60%" },
 ];
 
+function TechCard({ label, Icon, brandHsl }: Brand) {
+  // move beam center with the mouse
+  const onMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }, []);
 
   return (
-    <section id="skills" className="py-20 lg:py-32">
+    <div
+      className="skill-card p-5 flex flex-col items-center gap-3 group"
+      onMouseMove={onMove}
+      style={{ ["--brand" as any]: brandHsl }}
+    >
+      <div className="w-12 h-12 rounded-xl grid place-items-center bg-white/5 shadow-inner">
+        <Icon className="skill-icon text-2xl" />
+      </div>
+      <div className="font-medium">{label}</div>
+      <div className="skill-meter mt-1 w-full">
+        <span />
+      </div>
+    </div>
+  );
+}
+
+export default function SkillsSection() {
+  return (
+    <section id="skills" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="relative flex h-[330px] lg:h-[520px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
-          <h2 className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-white/90 to-white/40 bg-clip-text text-center text-5xl lg:text-8xl font-semibold leading-none text-transparent">
-            Skills
-          </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold">Skills &amp; Technologies</h2>
+          <p className="mt-2 text-muted-foreground">
+            The magical tools I use to bring <span className="text-gradient">ideas to life</span>
+          </p>
+          <div className="mx-auto mt-4 h-1 w-40 rounded-full bg-gradient-to-r from-sky-500 to-emerald-400" />
+        </div>
 
-          <div aria-hidden className="absolute inset-0 grid place-items-center">
-            <div className="h-64 w-64 lg:h-[420px] lg:w-[420px] rounded-full border border-white/10" />
-            <div className="absolute h-44 w-44 lg:h-[300px] lg:w-[300px] rounded-full border border-white/10" />
-          </div>
-
-          <OrbitingCircles radius={200} iconSize={40} speed={36}>
-            {outerIcons}
-          </OrbitingCircles>
-
-          <OrbitingCircles radius={130} iconSize={32} reverse speed={24}>
-            {innerIcons}
-          </OrbitingCircles>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {BRANDS.map((b) => (
+            <TechCard key={b.label} {...b} />
+          ))}
         </div>
       </div>
     </section>

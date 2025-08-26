@@ -1,127 +1,133 @@
-import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { OrbitingCircles } from "./OrbitingCircles";
+import {
+  SiApachespark,
+  SiApachekafka,
+  SiApacheairflow,
+  SiDatabricks,
+  SiDbt,
+  SiMlflow,
+  SiDocker,
+  SiKubernetes,
+  SiMicrosoftazure,
+  SiAzuredevops,
+  SiPostgresql,
+  SiSnowflake,
+  SiPython,
+  SiTerraform,
+  SiGooglecloud,
+} from "react-icons/si";
+import { DiAws } from "react-icons/di";
 
-const HeroSection = () => {
-  const handleResumeClick = () => {
-    window.open('/assets/Sebastian_Gonzalez_Resume.pdf', '_blank', 'noopener,noreferrer');
-  };
+const TextBadge = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex items-center justify-center h-7 px-2 rounded-full border border-white/15 text-[11px] font-semibold text-white/80 bg-black/30">
+    {children}
+  </span>
+);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/sebastian-gm', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/sebastiangonzalez-de', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:sebastiangm.dev@gmail.com', label: 'Email' }
+export default function HeroSection() {
+  const outerIcons = [
+    <SiApachespark key="spark" className="text-orange-500" />,
+    <SiApachekafka key="kafka" className="text-zinc-200" />,
+    <SiApacheairflow key="airflow" className="text-sky-400" />,
+    <SiDatabricks key="databricks" className="text-rose-500" />,
+    <SiDbt key="dbt" className="text-orange-400" />,
+    <SiMlflow key="mlflow" className="text-sky-500" />,
+    <TextBadge key="ge">GE</TextBadge>,
+    <TextBadge key="iceberg">Iceberg</TextBadge>,
+    <SiDocker key="docker" className="text-blue-400" />,
+    <SiKubernetes key="kubernetes" className="text-blue-400" />,
   ];
 
+  const innerIcons = [
+    <DiAws key="aws" className="text-amber-400" />,
+    <SiMicrosoftazure key="azure" className="text-sky-500" />,
+    <SiAzuredevops key="azdo" className="text-sky-400" />,
+    <SiGooglecloud key="gcp" className="text-sky-400" />,
+    <SiPostgresql key="postgres" className="text-cyan-400" />,
+    <SiSnowflake key="snowflake" className="text-sky-300" />,
+    <SiTerraform key="terraform" className="text-violet-400" />,
+    <SiPython key="python" className="text-yellow-400" />,
+    <TextBadge key="sql">SQL</TextBadge>,
+    <TextBadge key="delta">Δ Lake</TextBadge>,
+  ];
+
+  
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Content */}
-          <div className="space-y-8 reveal">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-foreground">Sebastian Gonzalez</span>
-                <br />
-                <span className="text-gradient">Data Engineer</span>
-              </h1>
-              
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                I design reliable data pipelines and production-grade MLOps—from ingestion to deployment—so teams can trust their data and ship faster.
-              </p>
-            </div>
+    <section id="home" className="py-16 md:py-24">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+        {/* Left column: headline + CTAs */}
+        <div>
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            Sebastian Gonzalez — <span className="text-gradient">Data Engineer</span>
+          </h1>
 
-            {/* Micro Stats */}
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-              <span className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-primary mr-2"></div>
-                5+ years in data
-              </span>
-              <span className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-accent mr-2"></div>
-                AWS & Azure
-              </span>
-              <span className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-primary-glow mr-2"></div>
-                ETL/ELT • Spark • Airflow • Databricks
-              </span>
-            </div>
+          <p className="mt-3 font-medium text-gradient">
+            Passionate about Artificial Intelligence
+          </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                onClick={handleResumeClick}
-                className="btn-hero text-base px-6 py-3 h-auto"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                View Resume
-              </Button>
-              
-              <Button 
-                variant="outline"
-                onClick={scrollToContact}
-                className="btn-outline-glass text-base px-6 py-3 h-auto"
-              >
-                Contact Me
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
+            I design reliable data pipelines and production-grade MLOps—from ingestion to deployment—
+            so teams can trust their data and ship faster.
+          </p>
 
-            {/* Social Links */}
-            <div className="flex gap-4 pt-4">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-lg tech-chip hover:text-primary transition-colors"
-                  aria-label={link.label}
-                >
-                  <link.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
+          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            <li>• 5+ years in data</li>
+            <li>• AWS &amp; Azure</li>
+            <li>• ETL/ELT</li>
+            <li>• Spark</li>
+            <li>• Airflow</li>
+            <li>• Databricks</li>
+          </ul>
+
+          <div className="mt-6 flex gap-4">
+            <a
+              href="/assets/Sebastian_Gonzalez_Resume.pdf"
+              target="_blank"
+              rel="noopener"
+              className="btn-outline-glass px-5 py-3 rounded-xl"
+            >
+              View Resume
+            </a>
+            <a href="#contact" className="btn-hero px-5 py-3 rounded-xl">
+              Contact Me
+            </a>
+          </div>
+        </div>
+
+        {/* Right column: orbit animation instead of profile photo */}
+        <div className="relative h-[330px] lg:h-[520px] w-full overflow-hidden rounded-2xl">
+          {/* faint guides */}
+          <div aria-hidden className="absolute inset-0 grid place-items-center">
+            <div className="h-64 w-64 lg:h-[420px] lg:w-[420px] rounded-full border border-white/10" />
+            <div className="absolute h-44 w-44 lg:h-[300px] lg:w-[300px] rounded-full border border-white/10" />
           </div>
 
-          {/* Right Content - Profile Photo */}
-          <div className="flex justify-center lg:justify-end reveal">
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full overflow-hidden ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
-                <img
-                  src="/assets/profile.png"
-                  alt="Sebastian Gonzalez - Data Engineer"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback to initials if image fails to load
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                    const parent = target.parentElement;
-                    if (parent) {
-                      parent.innerHTML = `
-                        <div class="w-full h-full bg-gradient-primary flex items-center justify-center">
-                          <span class="text-6xl font-bold text-primary-foreground">SG</span>
-                        </div>
-                      `;
-                    }
-                  }}
-                />
-              </div>
+          {/* OUTER (mobile + desktop) */}
+          <OrbitingCircles className="lg:hidden" radius={128} iconSize={28} speed={30} offsetDeg={-70}>
+            {outerIcons}
+          </OrbitingCircles>
+          <OrbitingCircles className="hidden lg:block" radius={210} iconSize={36} speed={36} offsetDeg={-70}>
+            {outerIcons}
+          </OrbitingCircles>
 
-              {/* Floating glow effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 blur-2xl animate-pulse"></div>
-            </div>
+          {/* INNER (reverse) */}
+          <OrbitingCircles className="lg:hidden" radius={88} iconSize={22} reverse speed={22} offsetDeg={15}>
+            {innerIcons}
+          </OrbitingCircles>
+          <OrbitingCircles className="hidden lg:block" radius={150} iconSize={28} reverse speed={26} offsetDeg={15}>
+            {innerIcons}
+          </OrbitingCircles>
+
+          {/* Title center (optional, like the screenshot) */}
+          <div className="absolute inset-0 grid place-items-center pointer-events-none">
+            <span className="bg-gradient-to-b from-white/90 to-white/40 bg-clip-text text-transparent text-5xl lg:text-7xl font-semibold">
+              Skills
+            </span>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

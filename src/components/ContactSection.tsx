@@ -48,7 +48,7 @@ const ContactSection = () => {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/sebastian-gm', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/sebastiangonzalez-de', label: 'LinkedIn' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/sebastian-sgm/', label: 'LinkedIn' }
   ];
 
   return (
