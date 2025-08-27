@@ -151,15 +151,29 @@
 }
 
 /* ====== Orbit (stay-upright + centered) ====== */
-.orbit-center{position:absolute;pointer-events:none}
-@keyframes orbit-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.orbit{position:relative;animation:orbit-spin var(--orbit-duration,28s) linear infinite}
-.orbit--reverse{animation-direction:reverse}
-.orbit__item{animation:orbit-spin var(--orbit-duration,28s) linear infinite reverse;transform-origin:center}
-.orbit--reverse .orbit__item{animation-direction:normal}
-@media (prefers-reduced-motion: reduce){.orbit,.orbit__item{animation:none!important}}
+.orbit-center { position: absolute; pointer-events: none; }
 
+/* Ring rotation */
+@keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
+.orbit { position: relative; animation: orbit-spin var(--orbit-duration, 28s) linear infinite; }
+.orbit--reverse { animation-direction: reverse; }
+
+/* Two-layer icon:
+   - slot: absolute on the circle, applies translate to center
+   - inner: counter-rotates so the icon stays upright */
+.orbit__slot { position: absolute; transform: translate(-50%, -50%); }
+.orbit__inner {
+  animation: orbit-spin var(--orbit-duration, 28s) linear infinite reverse;
+  transform-origin: center;
+}
+
+/* If the ring is reversed, keep inner animation normal */
+.orbit--reverse .orbit__inner { animation-direction: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .orbit__inner { animation: none !important; }
+}
 
 /* ==== Skills cards: hover glow & progress ==== */
 @layer components {

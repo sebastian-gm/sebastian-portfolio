@@ -20,6 +20,14 @@ import {
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const WORDS = [
+  "Reliable data",
+  "Simple systems",
+  "Data contracts",
+  "Observability",
+  "Reliable pipelines",
+  "Data quality",
+  "MLOps in production",
+  "Decision accuracy",
   "Artificial Intelligence",
   "Machine Learning",
   "LLMs",
@@ -56,7 +64,6 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-x-20 gap-y-10 items-center">
           {/* LEFT */}
           <div className="order-2 lg:order-1 pr-2 lg:pr-6">
-            {/* Bigger, but safer line-height to avoid clipping descenders like “g” */}
             <h1 className="text-[clamp(48px,7vw,80px)] font-extrabold leading-[1.12] tracking-tight">
               Sebastian Gonzalez
             </h1>
@@ -68,7 +75,7 @@ export default function HeroSection() {
             
             
 
-            {/* Keep on one line (desktop) */}
+            
             <h2 className="mt-5 text-[clamp(22px,3.4vw,36px)] font-semibold flex items-baseline gap-3 whitespace-nowrap">
               <span>Passionate about</span>
               <Typewriter
@@ -81,9 +88,7 @@ export default function HeroSection() {
             </h2>
 
             <p className="mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground">
-              I design reliable data pipelines and production-grade MLOps—from
-              ingestion to deployment—so teams can trust their data and ship
-              faster.
+              I build dependable data platforms for analytics and machine learning. From raw data to production, with data contracts, tests, and observability so teams ship faster and sleep better.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
@@ -116,7 +121,7 @@ export default function HeroSection() {
                 </a>
                 <a
                   aria-label="LinkedIn"
-                  href="https://linkedin.com/in/sebastiangonzalez-de"
+                  href="https://www.linkedin.com/in/sebastian-sgm/"
                   target="_blank"
                   rel="noopener"
                   className="inline-flex h-12 w-12 rounded-full bg-white/5 border border-white/10 grid place-items-center hover:bg-white/10 transition"

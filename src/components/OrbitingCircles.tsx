@@ -1,11 +1,11 @@
 import React, { ReactNode, CSSProperties } from "react";
 
 type Props = {
-  radius?: number;        // px at this render
+  radius?: number;        // px
   iconSize?: number;      // px
   speed?: number;         // seconds per revolution
   reverse?: boolean;
-  offsetDeg?: number;     // where the first item starts (default -90 = top)
+  offsetDeg?: number;     // where the first item starts (-90 = top)
   className?: string;
   children: ReactNode;
 };
@@ -48,18 +48,23 @@ export function OrbitingCircles({
           const x = radius + radius * Math.cos(theta);
           const y = radius + radius * Math.sin(theta);
           return (
+            // SLOT: only positions & translates to circle
             <div
               key={i}
-              className="absolute orbit__item"
+              className="absolute orbit__slot"
               style={{
                 left: x,
                 top: y,
                 transform: "translate(-50%, -50%)",
-                fontSize: iconSize,
-                lineHeight: 1,
               }}
             >
-              {child}
+              {/* INNER: only counter-rotates to keep icon upright */}
+              <div
+                className="orbit__inner"
+                style={{ fontSize: iconSize, lineHeight: 1 }}
+              >
+                {child}
+              </div>
             </div>
           );
         })}

@@ -19,11 +19,11 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPos = window.scrollY + 100;
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPos) {
@@ -39,9 +39,7 @@ const Navigation = () => {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
@@ -51,18 +49,30 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'backdrop-blur-lg bg-background/80 border-b border-glass-border' : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'backdrop-blur-lg bg-background/80 border-b border-glass-border'
+          : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+
+          {/* Brand / Logo (click to go Home) */}
           <div className="flex-shrink-0">
-            <button 
+            <button
               onClick={() => scrollToSection('home')}
-              className="text-xl font-bold text-gradient hover:opacity-80 transition-opacity"
+              className="flex items-center gap-2 group"
+              aria-label="Go to Home"
             >
-              SG
+              <img
+                src="/logo-mark.png"        // keep your file here: public/logo-mark.png
+                alt="Sebastian Gonzalez"
+                className="h-8 w-8 md:h-9 md:w-9 select-none"
+                draggable={false}
+              />
+              <span className="sr-only">Sebastian Gonzalez</span>
             </button>
           </div>
 
@@ -74,7 +84,9 @@ const Navigation = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`nav-link px-3 py-2 text-sm font-medium transition-colors ${
-                    activeSection === item.id ? 'active text-primary' : 'text-muted-foreground hover:text-foreground'
+                    activeSection === item.id
+                      ? 'active text-primary'
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {item.label}
@@ -92,7 +104,7 @@ const Navigation = () => {
             >
               {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
-            
+
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -115,7 +127,9 @@ const Navigation = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                  activeSection === item.id ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activeSection === item.id
+                    ? 'text-primary bg-primary/10'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
               >
                 {item.label}
