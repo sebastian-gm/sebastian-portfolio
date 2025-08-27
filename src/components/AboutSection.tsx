@@ -66,7 +66,7 @@ const AboutSection = () => {
           <div className="md:col-span-5 reveal">
             <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
               <img
-                src="public/profile.png"
+                src="/profile.png"
                 alt="Sebastian Gonzalez portrait"
                 className="w-full h-[420px] object-cover"
               />

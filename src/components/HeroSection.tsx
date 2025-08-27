@@ -93,7 +93,7 @@ export default function HeroSection() {
 
             <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
               <a
-                href="/assets/Sebastian_Gonzalez_Resume.pdf"
+                href="/assets/Sebastian_Resume.pdf"
                 target="_blank"
                 rel="noopener"
                 className="px-6 py-3.5 rounded-full bg-gradient-to-r from-sky-500 to-emerald-400 text-slate-900 font-semibold shadow hover:opacity-95 transition"
