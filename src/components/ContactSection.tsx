@@ -7,11 +7,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -25,21 +21,21 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // EmailJS integration would go here
-      // For now, we'll simulate the functionality
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message sent!",
-        description: "Thanks! I'll get back to you soon.",
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      
+
+      if (!res.ok) throw new Error('Request failed');
+
+      toast({ title: 'Message sent!', description: "Thanks! I'll get back to you soon." });
       setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
+    } catch {
       toast({
-        title: "Error sending message",
-        description: "Please email me directly at sebastiangm.dev@gmail.com",
-        variant: "destructive"
+        title: 'Error sending message',
+        description: 'Please email me directly at sebastiangm.dev@gmail.com',
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
@@ -48,7 +44,7 @@ const ContactSection = () => {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/sebastian-gm', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/sebastian-sgm/', label: 'LinkedIn' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/sebastian-sgm/', label: 'LinkedIn' },
   ];
 
   return (
@@ -68,14 +64,14 @@ const ContactSection = () => {
             <div className="card-glass rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
               <div className="space-y-4">
-                <a 
+                <a
                   href="mailto:sebastiangm.dev@gmail.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-5 h-5" />
                   sebastiangm.dev@gmail.com
                 </a>
-                
+
                 <div className="flex gap-4 pt-4">
                   {socialLinks.map((link, index) => (
                     <a
@@ -108,7 +104,7 @@ const ContactSection = () => {
                   className="bg-background/50 border-glass-border"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="email">Email *</Label>
                 <Input
@@ -121,7 +117,7 @@ const ContactSection = () => {
                   className="bg-background/50 border-glass-border"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="message">Message *</Label>
                 <Textarea
@@ -134,20 +130,9 @@ const ContactSection = () => {
                   className="bg-background/50 border-glass-border resize-none"
                 />
               </div>
-              
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="btn-hero w-full"
-              >
-                {isSubmitting ? (
-                  <>Sending...</>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
-                  </>
-                )}
+
+              <Button type="submit" disabled={isSubmitting} className="btn-hero w-full">
+                {isSubmitting ? <>Sending...</> : (<><Send className="w-4 h-4 mr-2" />Send Message</>)}
               </Button>
             </form>
           </div>
