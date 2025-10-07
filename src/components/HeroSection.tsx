@@ -38,7 +38,7 @@ const WORDS = [
   "LLMs",
   "MLOps",
   "Real-time Data",
-  "Data storytelling"
+  "Data storytelling",
 ];
 
 export default function HeroSection() {
@@ -76,7 +76,7 @@ export default function HeroSection() {
 
             <div className="mt-6 text-[clamp(44px,6.5vw,72px)] font-extrabold leading-[1.26] pb-1 md:pb-2
              bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
-              Data Engineer
+              Data / Analytics Engineer
             </div>
             
             
@@ -95,6 +95,7 @@ export default function HeroSection() {
 
             <p className="mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground">
                I build reliable data platforms and enable self-service analytics. From raw data to business insights, with semantic layers, dimensional models, and automated dashboards so teams make faster, data-driven decisions.
+            </p>
 
             <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
               <a
