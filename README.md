@@ -1,6 +1,6 @@
 # Sebastian Gonzalez - Portfolio
 
-This repository contains the source code for my personal portfolio website, showcasing my skills and projects as a Data Engineer.
+This repository contains the source code for my personal portfolio website, showcasing my skills and projects as a Data/Analytics Engineer.
 
 The site is built with Vite, React, TypeScript, and Tailwind CSS.
 

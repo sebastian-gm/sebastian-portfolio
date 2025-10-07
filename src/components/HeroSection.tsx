@@ -21,18 +21,24 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const WORDS = [
   "Reliable data",
+  "Business insights",
   "Simple systems",
   "Data contracts",
+  "Self-service analytics",
   "Observability",
   "Reliable pipelines",
   "Data quality",
   "MLOps in production",
   "Decision accuracy",
+  "Metric consistency",
   "Artificial Intelligence",
+  "Dimensional modeling",
   "Machine Learning",
+  "BI enablement", 
   "LLMs",
   "MLOps",
   "Real-time Data",
+  "Data storytelling"
 ];
 
 export default function HeroSection() {
@@ -88,8 +94,7 @@ export default function HeroSection() {
             </h2>
 
             <p className="mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground">
-              I build dependable data platforms for analytics and machine learning. From raw data to production, with data contracts, tests, and observability so teams ship faster and sleep better.
-            </p>
+               I build reliable data platforms and enable self-service analytics. From raw data to business insights, with semantic layers, dimensional models, and automated dashboards so teams make faster, data-driven decisions.
 
             <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
               <a

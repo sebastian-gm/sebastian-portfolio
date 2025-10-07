@@ -32,7 +32,7 @@ const AboutSection = () => {
             </div>
 
             <p className="leading-relaxed text-foreground/90">
-              I’m Sebastian, a Data Engineer with 5+ years helping data teams move faster and trust their pipelines. I started in data science, then shifted to the platform side to build the systems that power analytics and machine learning at scale.
+              I'm Sebastian, a hybrid Data / Analytics Engineer with 6+ years building data platforms that power business decisions. I design scalable pipelines and create semantic layers that enable self-service analytics across organizations.
             </p>
 
             <p className="leading-relaxed text-foreground/90">
