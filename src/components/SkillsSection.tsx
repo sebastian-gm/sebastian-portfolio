@@ -1,6 +1,8 @@
 import React, { useCallback } from "react";
 import {
   SiPython,
+  SiTableau,
+  SiPowerbi,
   SiApachespark,
   SiSnowflake,
   SiApacheairflow,
