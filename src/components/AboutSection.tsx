@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutSection = () => {
   const stats = [
-    { value: "5+", label: "Years Experience" },
+    { value: "6+", label: "Years Experience" },
     { value: "10+", label: "Projects Completed" },
     { value: "3", label: "Countries Studied", caption: "Chile • Spain • Canada" },
   ];
@@ -26,21 +26,25 @@ const AboutSection = () => {
           <div className="md:col-span-7 space-y-6 reveal">
             <div className="card-glass rounded-xl p-6">
               <p className="font-semibold text-primary">
-                I started in data science, then moved into data engineering to build scalable, production-ready data systems.
+                I’m a Data & Business Intelligence Analyst who turns messy data into decision-ready insights.
 
               </p>
             </div>
 
             <p className="leading-relaxed text-foreground/90">
-              I'm Sebastian, a hybrid Data / Analytics Engineer with 6+ years building data platforms that power business decisions. I design scalable pipelines and create semantic layers that enable self-service analytics across organizations.
+              I’m Sebastian, a Data & Business Intelligence Analyst with 6+ years turning complex financial and operational data into clear, reliable insights.
             </p>
 
             <p className="leading-relaxed text-foreground/90">
-              I design and run cloud-native data platforms on AWS and Azure with Airflow, Spark + Delta Lake, dbt, and Databricks. I put data contracts, automated tests, and observability in place. For serving and model ops I use FastAPI, MLflow, and CI/CD (GitHub Actions, Docker).
+              I build executive dashboards and automated reporting pipelines that connect Snowflake, AWS S3, and Azure SQL / ADF to Tableau and Power BI, giving teams faster and more trustworthy data.
             </p>
 
             <p className="leading-relaxed text-foreground/90">
-              Most of my work is in fintech and credit risk, where clean and timely data drives decisions. I’m always learning and simplifying so pipelines stay dependable, easy to operate, and safe to change.
+              My background in fintech and credit risk helps me bridge data engineering and business strategy, defining KPIs, optimizing data models, and delivering analytics that drive lending and portfolio decisions.
+            </p>
+
+             <p className="leading-relaxed text-foreground/90">
+              I focus on making data accurate, accessible, and actionable, so leaders can move from questions to confident decisions in minutes.
             </p>
             
 

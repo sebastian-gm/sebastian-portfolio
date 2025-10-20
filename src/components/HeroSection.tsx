@@ -1,67 +1,57 @@
 import Typewriter from "@/components/Typewriter";
 import { OrbitingCircles } from "@/components/OrbitingCircles";
 import {
-  SiApachespark,
-  SiApacheairflow,
+  SiTableau,
+  SiPowerbi,
+  SiPostgresql,
   SiDatabricks,
   SiDbt,
-  SiMlflow,
   SiDocker,
-  SiKubernetes,
   SiAmazonaws,
   SiMicrosoftazure,
-  SiGooglecloud,
   SiSnowflake,
   SiPython,
   SiMongodb,
   SiGit,
   SiLinux,
+  SiJupyter,
 } from "react-icons/si";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const WORDS = [
-  "Reliable data",
-  "Business insights",
-  "Simple systems",
-  "Data contracts",
-  "Self-service analytics",
-  "Observability",
-  "Reliable pipelines",
-  "Data quality",
-  "MLOps in production",
-  "Decision accuracy",
-  "Metric consistency",
+  "Executive dashboards",
+  "SQL + Python automation",
+  "A/B testing & uplift",
+  "KPI definitions that stick",
+  "Data storytelling",
+  "Forecasts & what-ifs",
+  "Self-serve analytics",
   "Artificial Intelligence",
-  "Dimensional modeling",
   "Machine Learning",
   "BI enablement", 
-  "LLMs",
-  "MLOps",
   "Real-time Data",
-  "Data storytelling",
 ];
 
 export default function HeroSection() {
   // smaller / separated orbits
   const outer = [
-    <SiApachespark key="spark" className="text-orange-500" />,
-    <SiApacheairflow key="airflow" className="text-sky-400" />,
+    <SiTableau key="tableau" className="text-sky-400" />,
+    <SiPowerbi key="pbi" className="text-yellow-400" />,
     <SiDatabricks key="databricks" className="text-rose-500" />,
     <SiDbt key="dbt" className="text-orange-400" />,
-    <SiMlflow key="mlflow" className="text-sky-500" />,
-    <SiDocker key="docker" className="text-blue-400" />,
-    <SiKubernetes key="k8s" className="text-blue-400" />,
+    <SiSnowflake key="snowflake" className="text-sky-500" />,
+    <SiAmazonaws key="aws" className="text-amber-400" />,
   ];
 
   const inner = [
-    <SiAmazonaws key="aws" className="text-amber-400" />,
-    <SiMicrosoftazure key="az" className="text-sky-500" />,
-    <SiGooglecloud key="gcp" className="text-sky-300" />,
-    <SiSnowflake key="snowflake" className="text-sky-300" />,
+    <SiMicrosoftazure key="az" className="text-sky-400" />,
+    <SiDocker key="docker" className="text-blue-400" />,
     <SiPython key="py" className="text-yellow-400" />,
     <SiMongodb key="mongo" className="text-emerald-400" />,
     <SiGit key="git" className="text-orange-500" />,
     <SiLinux key="linux" className="text-yellow-400" />,
+    <SiPostgresql key="pg" className="text-cyan-400" />,
+    <SiJupyter key="jup" className="text-orange-400" />,
   ];
 
   return (
@@ -76,7 +66,7 @@ export default function HeroSection() {
 
             <div className="mt-6 text-[clamp(44px,6.5vw,72px)] font-extrabold leading-[1.26] pb-1 md:pb-2
              bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
-              Data / Analytics Engineer
+              Data & BI Analyst
             </div>
             
             
@@ -94,7 +84,9 @@ export default function HeroSection() {
             </h2>
 
             <p className="mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground">
-               I build reliable data platforms and enable self-service analytics. From raw data to business insights, with semantic layers, dimensional models, and automated dashboards so teams make faster, data-driven decisions.
+              I turn messy operational data into decision-ready dashboards and reports. SQL and Python for data prep;
+              Tableau and Power BI for clear, trustworthy KPIs. Finance & credit-risk background, applied to any team that
+              needs faster, more confident decisions.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">

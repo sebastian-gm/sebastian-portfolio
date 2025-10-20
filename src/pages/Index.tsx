@@ -31,15 +31,15 @@ const Index = () => {
             "@graph": [
               {
                 "@type": "Person",
-                "@id": "https://sebastiangonzalez.dev/#person",
+                "@id": "https://sebastiangm.com/#person",
                 "name": "Sebastian Gonzalez",
-                "jobTitle": "Data Engineer",
-                "description": "Data Engineer with 5+ years experience building scalable ETL/ELT pipelines, MLOps systems, and cloud data platforms on AWS & Azure.",
-                "url": "https://sebastiangonzalez.dev",
+                "jobTitle": "Data & BI Analyst",
+                "description": "Data & BI Analyst with 6+ years building executive dashboards (Tableau, Power BI), SQL/Python reporting, and analytics across Snowflake, AWS & Azure. Finance & credit-risk domain depth.",
+                "url": "https://sebastiangm.com",
                 "email": "sebastiangm.dev@gmail.com",
                 "sameAs": [
                   "https://github.com/sebastian-gm",
-                  "https://linkedin.com/in/sebastiangonzalez-de"
+                  "https://www.linkedin.com/in/sebastian-sgm/"
                 ],
                 "worksFor": {
                   "@type": "Organization",
@@ -62,12 +62,12 @@ const Index = () => {
               },
               {
                 "@type": "WebSite",
-                "@id": "https://sebastiangonzalez.dev/#website",
-                "url": "https://sebastiangonzalez.dev",
-                "name": "Sebastian Gonzalez - Data Engineer Portfolio",
-                "description": "Professional portfolio showcasing data engineering projects, ETL/ELT pipelines, and MLOps systems.",
+                "@id": "https://sebastiangm.com/#website",
+                "url": "https://sebastiangm.com",
+                "name": "Sebastian Gonzalez - Data & BI Analyst Portfolio",
+                "description": "Professional portfolio showcasing data & BI analysis projects, executive dashboards, and analytics across Snowflake, AWS & Azure.",
                 "author": {
-                  "@id": "https://sebastiangonzalez.dev/#person"
+                  "@id": "https://sebastiangm.com/#person"
                 }
               }
             ]
