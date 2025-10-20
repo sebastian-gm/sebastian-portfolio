@@ -6,6 +6,7 @@ import {
   SiApachespark,
   SiSnowflake,
   SiApacheairflow,
+  SiPandas,
   SiAmazonaws,
   SiMicrosoftazure,
   SiDatabricks,
@@ -24,15 +25,15 @@ type Brand = {
 
 const BRANDS: Brand[] = [
   { label: "Python",        Icon: SiPython,         brandHsl: "48 96% 54%"  }, // yellow
-  { label: "Apache Spark",  Icon: SiApachespark,    brandHsl: "24 95% 55%"  }, // orange
+  { label: "Power BI",      Icon: SiPowerbi,        brandHsl: "45 100% 50%" },
   { label: "Snowflake",     Icon: SiSnowflake,      brandHsl: "199 86% 64%" },
-  { label: "Airflow",       Icon: SiApacheairflow,  brandHsl: "191 94% 49%" },
+  { label: "Tableau",       Icon: SiTableau,        brandHsl: "202 86% 55%" },
   { label: "AWS",           Icon: SiAmazonaws,      brandHsl: "40 96% 55%"  },
   { label: "Azure",         Icon: SiMicrosoftazure, brandHsl: "201 96% 54%" },
   { label: "Databricks",    Icon: SiDatabricks,     brandHsl: "352 84% 60%" },
   { label: "dbt",           Icon: SiDbt,            brandHsl: "17 88% 59%"  },
   { label: "Git",           Icon: SiGit,            brandHsl: "14 90% 55%"  },
-  { label: "Docker",        Icon: SiDocker,         brandHsl: "207 83% 60%" },
+  { label: "Pandas",        Icon: SiPandas,         brandHsl: "266 58% 55%" },
   { label: "MongoDB",       Icon: SiMongodb,        brandHsl: "142 70% 45%" },
   { label: "SQL",           Icon: SiPostgresql,     brandHsl: "201 35% 60%" },
 ];
@@ -69,7 +70,7 @@ export default function SkillsSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">Skills &amp; Technologies</h2>
           <p className="mt-2 text-muted-foreground">
-            The magical tools I use to bring <span className="text-gradient">ideas to life</span>
+            Tools I use to turn raw data into <span className="text-gradient">insights</span>
           </p>
           <div className="mx-auto mt-4 h-1 w-40 rounded-full bg-gradient-to-r from-sky-500 to-emerald-400" />
         </div>
