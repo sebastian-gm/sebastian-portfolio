@@ -27,6 +27,8 @@ type FeaturedProject = {
   links: ProjectLink[];
   caseStudyHref?: string;
   gradient: string;
+  image: string;
+  imageAlt: string;
 };
 
 const ProjectsSection = () => {
@@ -49,6 +51,8 @@ const ProjectsSection = () => {
       technologies: ['Python', 'FastAPI', 'MLflow', 'MongoDB', 'AWS', 'Docker', 'GitHub Actions'],
       deliverables: ['Training pipeline', 'Inference API', 'AWS ECS deployment runbook'],
       caseStudyHref: '/projects/networksecurity-phishing',
+      image: '/images/projects/network_security.png',
+      imageAlt: 'Illustration of the phishing detection pipeline from ingestion to FastAPI deployment',
       links: [
         { label: 'Case study', href: '/projects/networksecurity-phishing', icon: ArrowRight },
         { label: 'Code', href: 'https://github.com/sebastian-gm/networksecurity', icon: Github },
@@ -74,6 +78,8 @@ const ProjectsSection = () => {
       technologies: ['Azure', 'ADF', 'Databricks', 'Spark', 'Delta Lake', 'Synapse'],
       deliverables: ['ADF pipeline', 'Databricks notebooks', 'Synapse external tables'],
       caseStudyHref: '/projects/olist-commerce',
+      image: '/images/projects/olist.png',
+      imageAlt: 'Architecture graphic of Azure medallion pipeline with ADF, Delta Lake, Synapse, and Power BI',
       links: [
         { label: 'Case study', href: '/projects/olist-commerce', icon: ArrowRight },
         { label: 'Code', href: 'https://github.com/sebastian-gm/Olist_ecommerce_Azure_project', icon: Github },
@@ -210,19 +216,18 @@ const ProjectsSection = () => {
                   {/* Visual & metrics */}
                   <div className="relative order-1 lg:order-2">
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
-                    <div className="relative h-full min-h-[320px] lg:min-h-[100%] p-8 flex flex-col justify-between bg-muted/15">
-                      <div className="flex items-center gap-4">
-                        <div className="h-14 w-14 rounded-xl bg-gradient-primary/90 flex items-center justify-center shadow-lg shadow-primary/30">
-                          <Github className="w-7 h-7 text-primary-foreground" />
-                        </div>
-                        <div>
-                          <p className="text-sm uppercase tracking-wide text-white/70">Snapshot</p>
-                          <p className="text-lg font-semibold">{project.title}</p>
-                        </div>
+                    <div className="relative h-full min-h-[360px] lg:min-h-[420px] p-6 flex flex-col gap-6 bg-muted/15">
+                      <div className="relative w-full flex-1 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                        <img
+                          src={project.image}
+                          alt={project.imageAlt}
+                          className="h-full w-full object-contain object-center"
+                          loading="lazy"
+                        />
                       </div>
 
                       {project.metrics && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {project.metrics.map((metric, metricIdx) => (
                             <div
                               key={metricIdx}
