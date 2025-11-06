@@ -25,6 +25,7 @@ type FeaturedProject = {
   technologies: string[];
   deliverables?: string[];
   links: ProjectLink[];
+  caseStudyHref?: string;
   gradient: string;
 };
 
@@ -47,6 +48,7 @@ const ProjectsSection = () => {
       ],
       technologies: ['Python', 'FastAPI', 'MLflow', 'MongoDB', 'AWS', 'Docker', 'GitHub Actions'],
       deliverables: ['Training pipeline', 'Inference API', 'AWS ECS deployment runbook'],
+      caseStudyHref: '/projects/networksecurity-phishing',
       links: [
         { label: 'Case study', href: '/projects/networksecurity-phishing', icon: ArrowRight },
         { label: 'Code', href: 'https://github.com/sebastian-gm/networksecurity', icon: Github },
@@ -71,29 +73,12 @@ const ProjectsSection = () => {
       ],
       technologies: ['Azure', 'ADF', 'Databricks', 'Spark', 'Delta Lake', 'Synapse'],
       deliverables: ['ADF pipeline', 'Databricks notebooks', 'Synapse external tables'],
-      links: [{ label: 'Code', href: 'https://github.com/sebastian-gm/Olist_ecommerce_Azure_project', icon: Github }],
+      caseStudyHref: '/projects/olist-commerce',
+      links: [
+        { label: 'Case study', href: '/projects/olist-commerce', icon: ArrowRight },
+        { label: 'Code', href: 'https://github.com/sebastian-gm/Olist_ecommerce_Azure_project', icon: Github },
+      ],
       gradient: 'from-purple-500/20 to-pink-500/20',
-    },
-    {
-      title: 'IBKR Lakehouse (AWS)',
-      status: 'In Progress',
-      tagline: 'Streaming Kafka (Redpanda/MSK) → Iceberg on S3 → Athena/EMR serverless marts orchestrated with dbt & Great Expectations',
-      summary:
-        'Standing up an event-driven analytical lakehouse for trade, order, and market data. Focused on reproducible quality gates, governed Iceberg tables, and low-latency marts for risk and trading desks.',
-      highlights: [
-        'Authoring ingestion contracts and schema registry patterns so trading/risk teams ingest the same canonical events.',
-        'Designing dbt-driven semantic marts (PnL, risk factors, execution KPIs) with automated validation via Great Expectations and dbt tests.',
-        'Prototyping FastAPI services to expose curated metrics to downstream applications and BI tools.',
-      ],
-      metrics: [
-        { label: 'Target SLA', value: '< 5 min', caption: 'Trade-to-dashboard latency' },
-        { label: 'Data quality', value: '34 checks', caption: 'Automated in Bronze/Silver layers' },
-        { label: 'Cost guardrail', value: '<$6/hr', caption: 'Serverless & tiered storage' },
-      ],
-      technologies: ['AWS', 'Kafka', 'Iceberg', 'Athena', 'EMR', 'dbt', 'Great Expectations', 'FastAPI'],
-      deliverables: ['Architecture guide', 'Data contract template', 'dbt project plan'],
-      links: [{ label: 'See roadmap', href: '/projects/ibkr', icon: ArrowRight }],
-      gradient: 'from-blue-500/20 to-cyan-500/20',
     },
   ];
 
@@ -154,7 +139,16 @@ const ProjectsSection = () => {
                   <div className="p-8 lg:p-10 order-2 lg:order-1 space-y-6">
                     <div className="space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
-                        <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{project.title}</h3>
+                        {project.caseStudyHref ? (
+                          <a
+                            href={project.caseStudyHref}
+                            className="text-2xl md:text-3xl font-bold tracking-tight text-white hover:text-emerald-200 transition"
+                          >
+                            {project.title}
+                          </a>
+                        ) : (
+                          <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{project.title}</h3>
+                        )}
                         {project.status && (
                           <span className="px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-accent/15 text-accent rounded-full">
                             {project.status}
