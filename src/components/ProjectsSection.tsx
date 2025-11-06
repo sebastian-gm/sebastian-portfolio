@@ -48,6 +48,7 @@ const ProjectsSection = () => {
       technologies: ['Python', 'FastAPI', 'MLflow', 'MongoDB', 'AWS', 'Docker', 'GitHub Actions'],
       deliverables: ['Training pipeline', 'Inference API', 'AWS ECS deployment runbook'],
       links: [
+        { label: 'Case study', href: '/projects/networksecurity-phishing', icon: ArrowRight },
         { label: 'Code', href: 'https://github.com/sebastian-gm/networksecurity', icon: Github },
         { label: 'Docs', href: 'https://github.com/sebastian-gm/networksecurity#readme', icon: ExternalLink },
       ],
