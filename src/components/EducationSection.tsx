@@ -2,7 +2,7 @@ const EducationSection = () => {
   const education = [
     {
       school: 'Douglas College',
-      degree: 'Postgraduate Diploma in Computer & Information Systems',
+      degree: 'Postgraduate Diploma in Computer and Information Systems, Data Analytics',
       country: 'Canada',
       period: '2022–2023'
     },
@@ -14,9 +14,9 @@ const EducationSection = () => {
     },
     {
       school: 'Andres Bello University',
-      degree: 'BSc Economics (Concentration in Finance & Statistics)',
+      degree: 'BSc in Economics, Finance Concentration',
       country: 'Chile',
-      period: '2012–2015'
+      period: '2012–2016'
     }
   ];
 

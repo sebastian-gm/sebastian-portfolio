@@ -33,8 +33,8 @@ const Index = () => {
                 "@type": "Person",
                 "@id": "https://sebastiangm.com/#person",
                 "name": "Sebastian Gonzalez",
-                "jobTitle": "Data & BI Analyst",
-                "description": "Data & BI Analyst with 6+ years building executive dashboards (Tableau, Power BI), SQL/Python reporting, and analytics across Snowflake, AWS & Azure. Finance & credit-risk domain depth.",
+                "jobTitle": "Business Intelligence Developer",
+                "description": "Business Intelligence Developer focused on Microsoft BI stacks: Power BI semantic models, DAX, Power Query, Azure SQL, Azure Data Factory, ADLS Gen2, Azure Functions, and Power Automate. Finance and credit-risk domain depth.",
                 "url": "https://sebastiangm.com",
                 "email": "sebastiangm.dev@gmail.com",
                 "sameAs": [
@@ -64,8 +64,8 @@ const Index = () => {
                 "@type": "WebSite",
                 "@id": "https://sebastiangm.com/#website",
                 "url": "https://sebastiangm.com",
-                "name": "Sebastian Gonzalez - Data & BI Analyst Portfolio",
-                "description": "Professional portfolio showcasing data & BI analysis projects, executive dashboards, and analytics across Snowflake, AWS & Azure.",
+                "name": "Sebastian Gonzalez - BI Developer / BI Engineer Portfolio",
+                "description": "Professional portfolio showcasing Microsoft BI, Power BI semantic models, Azure data pipelines, automation, and governed analytics delivery.",
                 "author": {
                   "@id": "https://sebastiangm.com/#person"
                 }

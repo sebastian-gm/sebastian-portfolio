@@ -51,10 +51,10 @@ const ContactSection = () => {
     <section id="contact" className="py-20 px-4 bg-muted/20">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
           <div className="w-20 h-1 bg-gradient-accent mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-muted-foreground">
-            Want to collaborate or hire me? Send a note—I'll reply quickly.
+            Hiring for BI Developer, BI Engineer, or Power BI / Azure reporting roles? Send a note.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ const ContactSection = () => {
           {/* Contact Info */}
           <div className="reveal space-y-8">
             <div className="card-glass rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
+              <h3 className="text-xl font-semibold mb-4">Recruiter-ready details</h3>
               <div className="space-y-4">
                 <a
                   href="mailto:sebastiangm.dev@gmail.com"

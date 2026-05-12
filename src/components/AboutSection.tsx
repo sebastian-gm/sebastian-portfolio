@@ -1,11 +1,17 @@
 // src/components/AboutSection.tsx
 import React from "react";
 
+type Stat = {
+  value: string;
+  label: string;
+  caption?: string;
+};
+
 const AboutSection = () => {
-  const stats = [
-    { value: "6+", label: "Years Experience" },
-    { value: "10+", label: "Projects Completed" },
-    { value: "3", label: "Countries Studied", caption: "Chile • Spain • Canada" },
+  const stats: Stat[] = [
+    { value: "BI", label: "Dashboards, models, and reporting products" },
+    { value: "AI", label: "Experiments with automation and assisted analysis" },
+    { value: "Cloud", label: "Azure-first pipelines and practical data workflows" },
   ];
 
   return (
@@ -13,10 +19,10 @@ const AboutSection = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Heading */}
         <header className="text-center mb-12 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold">About Me</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-emerald-400 mx-auto rounded-full mt-4" />
+          <h2 className="text-4xl md:text-5xl font-bold">About</h2>
+          <div className="w-24 h-1 bg-gradient-accent mx-auto rounded-full mt-4" />
           <p className="mt-4 text-muted-foreground">
-            Get to know the person behind the <span className="text-gradient">data</span>
+            Practical data work, automation, and AI curiosity
           </p>
         </header>
 
@@ -26,25 +32,25 @@ const AboutSection = () => {
           <div className="md:col-span-7 space-y-6 reveal">
             <div className="card-glass rounded-xl p-6">
               <p className="font-semibold text-primary">
-                I’m a Data & Business Intelligence Analyst who turns messy data into decision-ready insights.
+                I enjoy building clean, useful data products: the kind of dashboards, pipelines, and small automations that make people ask better questions.
 
               </p>
             </div>
 
             <p className="leading-relaxed text-foreground/90">
-              I’m Sebastian, a Data & Business Intelligence Analyst with 6+ years turning complex financial and operational data into clear, reliable insights.
+              I’m Sebastian, a BI Developer / BI Engineer who likes the space where analytics, software, and business context meet. Most of my work lives around Power BI, SQL, Azure, Python, and automation.
             </p>
 
             <p className="leading-relaxed text-foreground/90">
-              I build executive dashboards and automated reporting pipelines that connect Snowflake, AWS S3, and Azure SQL / ADF to Tableau and Power BI, giving teams faster and more trustworthy data.
+              I’m also genuinely interested in AI: not as decoration, but as a way to speed up analysis, generate better workflows, improve documentation, and make data products more useful.
             </p>
 
             <p className="leading-relaxed text-foreground/90">
-              My background in fintech and credit risk helps me bridge data engineering and business strategy, defining KPIs, optimizing data models, and delivering analytics that drive lending and portfolio decisions.
+              My finance and credit-risk background still shows up in how I think: clear definitions, controls, risk, and business impact matter as much as the technical build.
             </p>
 
              <p className="leading-relaxed text-foreground/90">
-              I focus on making data accurate, accessible, and actionable, so leaders can move from questions to confident decisions in minutes.
+              This site is a snapshot of what I like to build and where I’m heading: BI engineering, analytics automation, and AI-assisted data experiences.
             </p>
             
 
@@ -52,13 +58,13 @@ const AboutSection = () => {
             <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               {stats.map((s) => (
                 <li key={s.label} className="card-glass rounded-xl p-4 text-center">
-                  <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+                  <div className="text-3xl md:text-4xl font-extrabold text-gradient">
                     {s.value}
                   </div>
                   <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
-                  {"caption" in s && (
+                  {s.caption && (
                     <div className="mt-1 text-xs text-muted-foreground/70">
-                      {(s as any).caption}
+                      {s.caption}
                     </div>
                   )}
                 </li>
@@ -72,7 +78,7 @@ const AboutSection = () => {
               <img
                 src="/profile.png"
                 alt="Sebastian Gonzalez portrait"
-                className="w-full h-[420px] object-cover"
+                className="w-full h-[420px] object-cover object-[center_28%]"
               />
             </div>
           </div>
