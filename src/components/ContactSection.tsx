@@ -62,7 +62,7 @@ const ContactSection = () => {
           {/* Contact Info */}
           <div className="reveal space-y-8">
             <div className="card-glass rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Recruiter-ready details</h3>
+              <h3 className="text-xl font-semibold mb-4">Where to find me</h3>
               <div className="space-y-4">
                 <a
                   href="mailto:sebastiangm.dev@gmail.com"
