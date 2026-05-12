@@ -58,10 +58,10 @@ const ProjectsSection = () => {
         { label: 'Code', href: 'https://github.com/sebastian-gm/networksecurity', icon: Github },
         { label: 'Docs', href: 'https://github.com/sebastian-gm/networksecurity#readme', icon: ExternalLink },
       ],
-      gradient: 'from-green-500/20 to-emerald-500/20',
+      gradient: 'from-stone-200/70 to-teal-900/10 dark:from-green-500/20 dark:to-emerald-500/20',
     },
     {
-      title: 'Olist Commerce – Azure Medallion Analytics',
+      title: 'Olist Commerce - Azure BI Engineering Platform',
       tagline: 'ADF ingestion → Databricks Delta Lake (Bronze/Silver/Gold) → Synapse serverless for Power BI and SQL consumers',
       summary:
         'Azure-first analytics platform for commerce KPIs. Automated batch + incremental ingestion, curated Delta tables with quality rules, and Synapse views consumed by BI teams for GMV, repeat purchase, and fulfilment SLAs.',
@@ -73,7 +73,7 @@ const ProjectsSection = () => {
       metrics: [
         { label: 'Refresh cadence', value: '30 min', caption: 'Bronze → Gold pipeline runtime' },
         { label: 'Duplicate purge', value: '99.2%', caption: 'Orders resolved in Silver layer' },
-        { label: 'Analyst time saved', value: '12 hrs/wk', caption: 'Manual Excel prep eliminated' },
+        { label: 'BI prep saved', value: '12 hrs/wk', caption: 'Manual Excel prep eliminated' },
       ],
       technologies: ['Azure', 'ADF', 'Databricks', 'Spark', 'Delta Lake', 'Synapse'],
       deliverables: ['ADF pipeline', 'Databricks notebooks', 'Synapse external tables'],
@@ -84,7 +84,7 @@ const ProjectsSection = () => {
         { label: 'Case study', href: '/projects/olist-commerce', icon: ArrowRight },
         { label: 'Code', href: 'https://github.com/sebastian-gm/Olist_ecommerce_Azure_project', icon: Github },
       ],
-      gradient: 'from-purple-500/20 to-pink-500/20',
+      gradient: 'from-stone-200/70 to-amber-900/10 dark:from-purple-500/20 dark:to-pink-500/20',
     },
   ];
 
@@ -131,24 +131,46 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
           <div className="w-20 h-1 bg-gradient-accent mx-auto rounded-full"></div>
+          <p className="mt-4 text-muted-foreground">
+            Data engineering, BI, automation, and ML systems I built to explore practical problems end to end.
+          </p>
         </div>
 
         {/* Main Projects */}
         <div className="space-y-12 mb-20">
-          {mainProjects.map((project, index) => (
+          {[...mainProjects]
+            .sort((a, b) => Number(b.title.includes('Azure')) - Number(a.title.includes('Azure')))
+            .map((project, index) => (
             <div key={index} className="reveal">
               <div className="project-card card-glass rounded-2xl overflow-hidden">
-                <div className="grid lg:grid-cols-[minmax(0,1fr)_420px] xl:grid-cols-[minmax(0,1fr)_440px] gap-10">
-                  {/* Content */}
-                  <div className="p-8 lg:p-10 order-2 lg:order-1 space-y-6">
+                <div className="relative">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
+                  <a
+                    href={project.caseStudyHref ?? project.links[0]?.href}
+                    className="relative block p-4 md:p-6"
+                    target={project.caseStudyHref ? undefined : '_blank'}
+                    rel={project.caseStudyHref ? undefined : 'noopener noreferrer'}
+                  >
+                    <div className="overflow-hidden rounded-xl border border-border bg-card/80 shadow-sm">
+                      <img
+                        src={project.image}
+                        alt={project.imageAlt}
+                        className="aspect-video w-full object-contain object-center p-2 md:p-3"
+                        loading="lazy"
+                      />
+                    </div>
+                  </a>
+
+                  <div className="relative grid gap-8 p-8 pt-4 lg:grid-cols-[minmax(0,1fr)_340px] lg:p-10 lg:pt-4">
+                    <div className="space-y-6">
                     <div className="space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
                         {project.caseStudyHref ? (
                           <a
                             href={project.caseStudyHref}
-                            className="text-2xl md:text-3xl font-bold tracking-tight text-white hover:text-emerald-200 transition"
+                            className="text-2xl md:text-3xl font-bold tracking-tight text-foreground hover:text-primary transition"
                           >
                             {project.title}
                           </a>
@@ -166,7 +188,7 @@ const ProjectsSection = () => {
                     </div>
 
                     <div className="space-y-3">
-                      <h4 className="uppercase text-xs tracking-widest text-muted-foreground">Role & impact</h4>
+                      <h4 className="uppercase text-xs tracking-widest text-muted-foreground">What I built</h4>
                       <ul className="space-y-2 text-sm text-muted-foreground/90">
                         {project.highlights.map((item, idx) => (
                           <li key={idx} className="flex gap-2">
@@ -188,12 +210,45 @@ const ProjectsSection = () => {
                       </div>
                     )}
 
-                    <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <TechChip key={techIndex}>{tech}</TechChip>
-                        ))}
+                    </div>
+
+                    <aside className="space-y-5">
+                      {project.metrics && (
+                        <div className="space-y-3">
+                          <h4 className="uppercase text-xs tracking-widest text-muted-foreground">Impact</h4>
+                          <div className="grid gap-3">
+                            {project.metrics.map((metric) => (
+                              <div
+                                key={metric.label}
+                                className="rounded-xl border border-border bg-card/85 p-4 shadow-sm backdrop-blur-sm"
+                              >
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                                  {metric.label}
+                                </p>
+                                <div className="mt-2 flex items-end justify-between gap-3">
+                                  <p className="text-3xl font-bold text-foreground">{metric.value}</p>
+                                  <span className="h-8 w-1 rounded-full bg-gradient-accent" />
+                                </div>
+                                {metric.caption && (
+                                  <p className="mt-2 text-xs leading-snug text-muted-foreground">
+                                    {metric.caption}
+                                  </p>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="space-y-2">
+                        <h4 className="uppercase text-xs tracking-widest text-muted-foreground">Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, techIndex) => (
+                            <TechChip key={techIndex}>{tech}</TechChip>
+                          ))}
+                        </div>
                       </div>
+
                       <div className="flex flex-wrap gap-3 pt-1">
                         {project.links.map((link, linkIndex) => (
                           <Button
@@ -210,39 +265,7 @@ const ProjectsSection = () => {
                           </Button>
                         ))}
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Visual & metrics */}
-                  <div className="relative order-1 lg:order-2">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
-                    <div className="relative h-full min-h-[360px] lg:min-h-[420px] p-6 flex flex-col gap-6 bg-muted/15">
-                      <div className="relative w-full flex-1 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                        <img
-                          src={project.image}
-                          alt={project.imageAlt}
-                          className="h-full w-full object-contain object-center"
-                          loading="lazy"
-                        />
-                      </div>
-
-                      {project.metrics && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {project.metrics.map((metric, metricIdx) => (
-                            <div
-                              key={metricIdx}
-                              className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
-                            >
-                              <p className="text-sm uppercase tracking-wide text-white/60">{metric.label}</p>
-                              <p className="text-2xl font-semibold text-white mt-1">{metric.value}</p>
-                              {metric.caption && (
-                                <p className="text-xs text-white/70 mt-1 leading-snug">{metric.caption}</p>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    </aside>
                   </div>
                 </div>
               </div>
@@ -252,7 +275,7 @@ const ProjectsSection = () => {
 
         {/* More Projects Grid */}
         <div className="reveal">
-          <h3 className="text-2xl font-bold text-center mb-8">Analytics & BI Case Studies</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">Supporting Analytics Case Studies</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             {moreProjects.map((project, index) => (
               <a

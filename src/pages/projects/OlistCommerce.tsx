@@ -130,9 +130,9 @@ const ASSUMPTIONS = [
 ];
 
 const OlistCommerce = () => (
-  <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-slate-50">
+  <div className="case-study-page min-h-screen bg-gradient-hero text-foreground">
     <div className="relative overflow-hidden pb-24">
-      <div className="absolute inset-x-0 -top-20 h-72 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.18),transparent)] blur-3xl" />
+      <div className="absolute inset-x-0 -top-20 h-72 bg-[radial-gradient(ellipse_at_top,rgba(142,103,47,0.16),transparent)] blur-3xl" />
 
       <header className="relative pt-24 pb-16 container mx-auto px-4 sm:px-6 lg:px-8">
         <Link
