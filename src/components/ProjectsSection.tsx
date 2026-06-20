@@ -34,6 +34,34 @@ type FeaturedProject = {
 const ProjectsSection = () => {
   const mainProjects: FeaturedProject[] = [
     {
+      title: 'Credit Risk AI Platform',
+      status: 'In progress',
+      tagline: 'Azure workflow for cited answers, document extraction, evaluation, and governance',
+      summary:
+        'A synthetic fintech lending demo built on Azure. It organizes credit documents and analytics data, answers policy questions with citations, extracts invoice fields, evaluates retrieval quality, and tracks governance controls.',
+      highlights: [
+        'Deployed the Azure foundation with Terraform: Data Lake, Azure SQL, AI Search, Azure OpenAI, Document Intelligence, monitoring, Key Vault, and budget controls.',
+        'Built hybrid search and a grounded assistant for credit-risk policies, underwriting memos, operations reports, and synthetic applications.',
+        'Added evaluation and governance tables so adoption, risk, prompts, reviews, and audit events can be reported later in Power BI.',
+      ],
+      metrics: [
+        { label: 'RAG eval', value: '1.00', caption: 'Retrieval hit rate @5' },
+        { label: 'SQL rows', value: '29k+', caption: 'Credit-risk records loaded' },
+        { label: 'Controls', value: '4 tables', caption: 'Registry, prompts, reviews, audit log' },
+      ],
+      technologies: ['Azure', 'Terraform', 'AI Search', 'Azure OpenAI', 'Document Intelligence', 'Azure SQL', 'Python'],
+      deliverables: ['Cited answer workflow', 'Document extraction', 'Evaluation harness', 'Governance registry'],
+      caseStudyHref: '/projects/credit-risk-ai-platform',
+      image: '/images/projects/credit-risk-ai-platform.png',
+      imageAlt: 'Minimal workflow diagram for the credit risk AI platform tools and data flow',
+      links: [
+        { label: 'Case study', href: '/projects/credit-risk-ai-platform', icon: ArrowRight },
+        { label: 'Code', href: 'https://github.com/sebastian-gm/credit-risk-ai-platform', icon: Github },
+        { label: 'Docs', href: 'https://github.com/sebastian-gm/credit-risk-ai-platform/tree/main/docs', icon: ExternalLink },
+      ],
+      gradient: 'from-primary/10 to-accent/10 dark:from-primary/15 dark:to-accent/15',
+    },
+    {
       title: 'Network Security Phishing Detection System',
       tagline: 'Containerised ML + MLOps pipeline with drift monitoring, MLflow experiment tracking, and FastAPI deployment to AWS ECS',
       summary:
@@ -140,9 +168,7 @@ const ProjectsSection = () => {
 
         {/* Main Projects */}
         <div className="space-y-12 mb-20">
-          {[...mainProjects]
-            .sort((a, b) => Number(b.title.includes('Azure')) - Number(a.title.includes('Azure')))
-            .map((project, index) => (
+          {mainProjects.map((project, index) => (
             <div key={index} className="reveal">
               <div className="project-card card-glass rounded-2xl overflow-hidden">
                 <div className="relative">

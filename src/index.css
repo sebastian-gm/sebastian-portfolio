@@ -209,6 +209,33 @@
   .case-study-page a:hover {
     color: hsl(var(--primary)) !important;
   }
+
+  .credit-risk-page .credit-panel {
+    background-color: var(--glass-bg) !important;
+    border-color: var(--glass-border) !important;
+    color: hsl(var(--foreground)) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+
+  .credit-risk-page .credit-panel .text-white,
+  .credit-risk-page .credit-panel .text-slate-100,
+  .credit-risk-page .credit-panel .text-slate-200 {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .credit-risk-page .credit-panel .text-slate-300,
+  .credit-risk-page .credit-panel .text-slate-400 {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  .credit-risk-page .credit-panel a,
+  .credit-risk-page .credit-panel a:hover {
+    color: hsl(var(--primary)) !important;
+  }
+
+  .credit-risk-page .section-number {
+    color: hsl(var(--primary)) !important;
+  }
 }
 
 /* ====== Orbit (stay-upright + centered) ====== */

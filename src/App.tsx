@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import CreditRiskAIPlatform from "./pages/projects/CreditRiskAIPlatform";
 import NetworkSecurityPhishing from "./pages/projects/NetworkSecurityPhishing";
 import OlistCommerce from "./pages/projects/OlistCommerce";
 
@@ -16,6 +17,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/projects/credit-risk-ai-platform" element={<CreditRiskAIPlatform />} />
           <Route path="/projects/networksecurity-phishing" element={<NetworkSecurityPhishing />} />
           <Route path="/projects/olist-commerce" element={<OlistCommerce />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
