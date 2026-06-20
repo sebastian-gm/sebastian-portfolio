@@ -37,6 +37,7 @@ const RESOURCES = [
 ];
 
 const TOC = [
+  { label: 'Plain English', href: '#plain-english' },
   { label: 'Background', href: '#project-background' },
   { label: 'Executive Summary', href: '#executive-summary' },
   { label: 'Architecture', href: '#architecture' },
@@ -138,9 +139,8 @@ const CreditRiskAIPlatform = () => (
               Credit Risk AI Platform
             </h1>
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-              A synthetic fintech lending demo built on Azure. It organizes credit documents and analytics data, answers
-              policy questions with citations, extracts invoice fields, evaluates retrieval quality, and stores governance
-              controls in SQL for reporting.
+              A fintech lending demo built on Azure. It brings policies, loan files, invoices, and risk data into one
+              controlled workflow so analysts can find trusted answers, review documents faster, and track AI risk.
             </p>
             <div className="flex flex-wrap gap-3">
               {STACK.map((item) => (
@@ -194,10 +194,49 @@ const CreditRiskAIPlatform = () => (
           </ol>
         </nav>
 
+        <section id="plain-english" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-semibold flex items-center gap-3">
+              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">1.</span>
+              What it does
+            </h2>
+            <p className="text-slate-300 leading-relaxed">
+              A lending company usually has policies, loan files, invoices, and risk reports spread across different
+              systems. This project puts that information into Azure, makes it searchable, and lets a credit-risk analyst
+              ask questions with source citations.
+            </p>
+            <p className="text-slate-300 leading-relaxed">
+              It also reads invoice fields, checks answer quality, and records which AI use cases are approved, reviewed,
+              or blocked. The goal is faster work with clear controls, especially for teams dealing with regulated
+              financial data.
+            </p>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="credit-panel rounded-2xl border border-border bg-card/80 p-6 space-y-2">
+              <h3 className="text-sm uppercase tracking-widest text-slate-200">Find answers</h3>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Analysts can ask policy questions and see which document the answer came from.
+              </p>
+            </div>
+            <div className="credit-panel rounded-2xl border border-border bg-card/80 p-6 space-y-2">
+              <h3 className="text-sm uppercase tracking-widest text-slate-200">Review documents</h3>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Finance documents are processed into structured fields for faster review.
+              </p>
+            </div>
+            <div className="credit-panel rounded-2xl border border-border bg-card/80 p-6 space-y-2">
+              <h3 className="text-sm uppercase tracking-widest text-slate-200">Control risk</h3>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Risk reviews, prompt ownership, and blocked use cases are stored for reporting.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="project-background" className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold flex items-center gap-3">
-              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">1.</span>
+              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">2.</span>
               Background
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -227,7 +266,7 @@ const CreditRiskAIPlatform = () => (
         <section id="executive-summary" className="space-y-8">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold flex items-center gap-3">
-              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">2.</span>
+              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">3.</span>
               Executive summary
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -262,7 +301,7 @@ const CreditRiskAIPlatform = () => (
         <section id="architecture" className="space-y-8">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold flex items-center gap-3">
-              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">3.</span>
+              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">4.</span>
               Architecture
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -290,7 +329,7 @@ const CreditRiskAIPlatform = () => (
         <section id="ai-workflows" className="space-y-8">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold flex items-center gap-3">
-              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">4.</span>
+              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">5.</span>
               Workflows
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -311,7 +350,7 @@ const CreditRiskAIPlatform = () => (
         <section id="governance" className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold flex items-center gap-3">
-              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">5.</span>
+              <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">6.</span>
               Evaluation & governance
             </h2>
             <p className="text-slate-300 leading-relaxed">
@@ -338,7 +377,7 @@ const CreditRiskAIPlatform = () => (
 
         <section id="portfolio-value" className="space-y-4">
           <h2 className="text-2xl font-semibold flex items-center gap-3">
-            <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">6.</span>
+            <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">7.</span>
             Portfolio value
           </h2>
           <p className="text-slate-300 leading-relaxed">
@@ -350,7 +389,7 @@ const CreditRiskAIPlatform = () => (
 
         <section id="next-steps" className="space-y-4">
           <h2 className="text-2xl font-semibold flex items-center gap-3">
-            <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">7.</span>
+            <span className="section-number text-sm font-mono font-semibold uppercase tracking-[0.18em]">8.</span>
             Next steps
           </h2>
           <ul className="list-disc space-y-2 pl-5 text-slate-300 text-sm leading-relaxed">
