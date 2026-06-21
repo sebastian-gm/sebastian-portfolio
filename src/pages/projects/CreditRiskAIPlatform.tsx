@@ -27,6 +27,11 @@ const STACK = [
 const RESOURCES = [
   { label: 'GitHub repository', href: 'https://github.com/sebastian-gm/credit-risk-ai-platform', icon: Github },
   {
+    label: 'Demo package',
+    href: 'https://github.com/sebastian-gm/credit-risk-ai-platform/blob/main/docs/demo-package.md',
+    icon: ExternalLink,
+  },
+  {
     label: 'Evaluation docs',
     href: 'https://github.com/sebastian-gm/credit-risk-ai-platform/blob/main/docs/evaluation.md',
     icon: ExternalLink,
