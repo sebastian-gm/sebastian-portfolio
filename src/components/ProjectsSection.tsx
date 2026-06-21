@@ -38,7 +38,7 @@ const ProjectsSection = () => {
       status: 'In progress',
       tagline: 'Azure workflow for cited answers, document extraction, evaluation, and governance',
       summary:
-        'A synthetic fintech lending demo built on Azure. It organizes credit documents and analytics data, answers policy questions with citations, extracts invoice fields, evaluates retrieval quality, and tracks governance controls.',
+        'A synthetic fintech lending demo built on Azure. It organizes credit documents and analytics data, answers policy questions with citations, extracts invoice fields, evaluates retrieval and hosted-agent behavior, and tracks governance controls.',
       highlights: [
         'Deployed the Azure foundation with Terraform: Data Lake, Azure SQL, AI Search, Azure OpenAI, Document Intelligence, monitoring, Key Vault, and budget controls.',
         'Built hybrid search and a grounded assistant for credit-risk policies, underwriting memos, operations reports, and synthetic applications.',
@@ -46,6 +46,7 @@ const ProjectsSection = () => {
       ],
       metrics: [
         { label: 'RAG eval', value: '1.00', caption: 'Retrieval hit rate @5' },
+        { label: 'Foundry', value: '2/2', caption: 'Hosted-agent smoke eval' },
         { label: 'SQL rows', value: '29k+', caption: 'Credit-risk records loaded' },
         { label: 'Controls', value: '4 tables', caption: 'Registry, prompts, reviews, audit log' },
       ],

@@ -5,6 +5,7 @@ import TechChip from '@/components/TechChip';
 
 const METRICS = [
   { label: 'RAG eval', value: '1.00', detail: 'Retrieval hit rate @5 across curated test questions' },
+  { label: 'Foundry eval', value: '2/2', detail: 'Hosted agent smoke cases passed in Azure AI Foundry' },
   { label: 'SQL rows', value: '29k+', detail: 'Synthetic credit-risk records loaded into Azure SQL' },
   { label: 'Controls', value: '4 tables', detail: 'Registry, checklist, prompt library, and audit log' },
 ];
@@ -75,7 +76,7 @@ const ARCHITECTURE_STEPS = [
       'Azure OpenAI answers policy and workflow questions from retrieved context, Azure AI Foundry hosts a Credit Policy Assistant grounded in Azure AI Search, and Document Intelligence extracts invoice fields for a finance automation scenario.',
     bullets: [
       'Grounded assistant uses gpt-5-mini with strict context and citation behavior',
-      'Azure AI Foundry hosted agent returns policy answers with source-path citations',
+      'Azure AI Foundry hosted agent returns policy answers with source-path citations and passed the first smoke evaluation',
       'Prebuilt invoice extraction captures vendor, customer, invoice ID, dates, subtotal, tax, and total',
       'No production applicant, customer, or company data is used',
     ],
@@ -357,8 +358,9 @@ const CreditRiskAIPlatform = () => (
             </h2>
             <p className="text-slate-300 leading-relaxed">
               The project includes a small but explicit evaluation harness. Current results show 1.00 retrieval hit rate
-              at top 5 and 1.00 answer term pass rate. Governance tables track use cases, review checks, prompt metadata,
-              and audit events. A prohibited fully automated loan approval use case is intentionally blocked.
+              at top 5, 1.00 answer term pass rate, and 2 of 2 hosted-agent smoke cases passing in Azure AI Foundry.
+              Governance tables track use cases, review checks, prompt metadata, and audit events. A prohibited fully
+              automated loan approval use case is intentionally blocked.
             </p>
             <ul className="list-disc space-y-3 pl-5 text-slate-300 text-sm">
               <li>Evaluation cases cover DTI policy, document requirements, routing, and prohibited automation.</li>
@@ -373,7 +375,7 @@ const CreditRiskAIPlatform = () => (
               <li>29,465 credit-risk rows loaded into Azure SQL.</li>
               <li>6 AI use cases, 6 review checks, 4 prompts, and 4 audit events seeded.</li>
               <li>Invoice extraction succeeded for vendor, customer, dates, subtotal, tax, and total.</li>
-              <li>Azure AI Foundry hosted agent tested successfully with Search-grounded citations.</li>
+              <li>Azure AI Foundry hosted agent passed a 2-case smoke evaluation.</li>
             </ul>
           </div>
         </section>
