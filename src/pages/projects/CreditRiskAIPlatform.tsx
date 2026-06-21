@@ -72,10 +72,10 @@ const ARCHITECTURE_STEPS = [
   {
     title: 'AI assistant and document extraction',
     description:
-      'Azure OpenAI answers policy and workflow questions from retrieved context, Azure AI Foundry provides a project endpoint for model and agent testing, and Document Intelligence extracts invoice fields for a finance automation scenario.',
+      'Azure OpenAI answers policy and workflow questions from retrieved context, Azure AI Foundry hosts a Credit Policy Assistant grounded in Azure AI Search, and Document Intelligence extracts invoice fields for a finance automation scenario.',
     bullets: [
       'Grounded assistant uses gpt-5-mini with strict context and citation behavior',
-      'Azure AI Foundry project endpoint is provisioned with a running gpt-5-mini deployment',
+      'Azure AI Foundry hosted agent returns policy answers with source-path citations',
       'Prebuilt invoice extraction captures vendor, customer, invoice ID, dates, subtotal, tax, and total',
       'No production applicant, customer, or company data is used',
     ],
@@ -373,7 +373,7 @@ const CreditRiskAIPlatform = () => (
               <li>29,465 credit-risk rows loaded into Azure SQL.</li>
               <li>6 AI use cases, 6 review checks, 4 prompts, and 4 audit events seeded.</li>
               <li>Invoice extraction succeeded for vendor, customer, dates, subtotal, tax, and total.</li>
-              <li>Azure AI Foundry project endpoint tested successfully with gpt-5-mini.</li>
+              <li>Azure AI Foundry hosted agent tested successfully with Search-grounded citations.</li>
             </ul>
           </div>
         </section>
