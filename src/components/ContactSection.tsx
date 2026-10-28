@@ -1,145 +1,151 @@
-import { useState } from 'react';
-import { Github, Linkedin, Mail, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
-
-const ContactSection = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+import { useRef, useState, type FormEvent } from "react";
+import { PiArrowRight, PiArrowUpRight } from "react-icons/pi";
+import { FaLinkedin, FaGithub } from "react-icons/fa6";
+export default function ContactSection() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const sending = useRef(false);
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (sending.current) return;
+    sending.current = true;
+    setStatus("sending");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
     try {
-      const res = await fetch('/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      const response = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
       });
-
-      if (!res.ok) throw new Error('Request failed');
-
-      toast({ title: 'Message sent!', description: "Thanks! I'll get back to you soon." });
-      setFormData({ name: '', email: '', message: '' });
+      if (!response.ok || !(await response.json()).ok)
+        throw new Error("Delivery not confirmed");
+      setStatus("sent");
+      form.reset();
     } catch {
-      toast({
-        title: 'Error sending message',
-        description: 'Please email me directly at sebastiangm.dev@gmail.com',
-        variant: 'destructive',
-      });
+      setStatus("error");
     } finally {
-      setIsSubmitting(false);
+      clearTimeout(timeout);
+      sending.current = false;
     }
-  };
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/sebastian-gm', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/sebastian-sgm/', label: 'LinkedIn' },
-  ];
-
+  }
   return (
-    <section id="contact" className="py-20 px-4 bg-muted/20">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16 reveal">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
-          <div className="w-20 h-1 bg-gradient-accent mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-muted-foreground">
-            Hiring for BI Developer, BI Engineer, or Power BI / Azure reporting roles? Send a note.
+    <section
+      id="contact"
+      className="section contact-section"
+      aria-labelledby="contact-title"
+    >
+      <div className="page-width">
+        <div className="contact-heading">
+          <h2 id="contact-title">Got something in mind?</h2>
+          <p>
+            A role, a project, or a process that needs a better way. Tell me
+            about it.
           </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="reveal space-y-8">
-            <div className="card-glass rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Where to find me</h3>
-              <div className="space-y-4">
-                <a
-                  href="mailto:sebastiangm.dev@gmail.com"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Mail className="w-5 h-5" />
-                  sebastiangm.dev@gmail.com
-                </a>
-
-                <div className="flex gap-4 pt-4">
-                  {socialLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-lg tech-chip hover:text-primary transition-colors"
-                      aria-label={link.label}
-                    >
-                      <link.icon className="w-5 h-5" />
-                    </a>
-                  ))}
-                </div>
-              </div>
+        <div className="contact-layout">
+          <div className="contact-direct">
+            <a
+              className="contact-email"
+              href="mailto:sebastiangm.dev@gmail.com"
+            >
+              Email me <PiArrowUpRight aria-hidden="true" />
+            </a>
+            <span>sebastiangm.dev@gmail.com</span>
+            <div className="contact-socials">
+              <a
+                href="https://www.linkedin.com/in/sebastian-sgm/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaLinkedin className="social-logo" aria-hidden="true" />{" "}
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/sebastian-gm"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaGithub className="social-logo" aria-hidden="true" /> GitHub
+              </a>
             </div>
+            <a
+              className="button button-light resume-download"
+              href="/resumes/Sebastian_Resume.pdf"
+              download="Sebastian_Resume.pdf"
+            >
+              Download my resume <PiArrowUpRight aria-hidden="true" />
+            </a>
+            <p className="resume-caption">AI, automation & data · PDF</p>
           </div>
-
-          {/* Contact Form */}
-          <div className="reveal">
-            <form onSubmit={handleSubmit} className="card-glass rounded-lg p-6 space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name *</Label>
-                <Input
-                  id="name"
+          <form onSubmit={submit} className="contact-form">
+            <div className="form-pair">
+              <label>
+                Name
+                <input
                   name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
+                  autoComplete="name"
                   required
-                  className="bg-background/50 border-glass-border"
+                  maxLength={100}
+                  placeholder="Your name"
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
-                <Input
-                  id="email"
+              </label>
+              <label>
+                Email
+                <input
                   name="email"
                   type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
+                  autoComplete="email"
                   required
-                  className="bg-background/50 border-glass-border"
+                  maxLength={254}
+                  placeholder="you@company.com"
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">Message *</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={5}
-                  className="bg-background/50 border-glass-border resize-none"
-                />
-              </div>
-
-              <Button type="submit" disabled={isSubmitting} className="btn-hero w-full">
-                {isSubmitting ? <>Sending...</> : (<><Send className="w-4 h-4 mr-2" />Send Message</>)}
-              </Button>
-            </form>
-          </div>
+              </label>
+            </div>
+            <label>
+              What do you have in mind?
+              <textarea
+                name="message"
+                required
+                maxLength={5000}
+                rows={3}
+                placeholder="Tell me a little about it."
+              />
+            </label>
+            <button
+              type="submit"
+              className="button button-light"
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? "Sending…" : "Send a message"}
+              <PiArrowRight aria-hidden="true" />
+            </button>
+            <p className="contact-privacy">
+              Your message is emailed to me so I can reply.
+            </p>
+            <div aria-live="polite" className="form-status">
+              {status === "sent" && "Message sent. Thanks for reaching out."}
+              {status === "error" && (
+                <>
+                  Delivery couldn’t be confirmed. Please email{" "}
+                  <a href="mailto:sebastiangm.dev@gmail.com">
+                    sebastiangm.dev@gmail.com
+                  </a>{" "}
+                  directly.
+                </>
+              )}
+            </div>
+          </form>
         </div>
       </div>
     </section>
   );
-};
-
-export default ContactSection;
+}

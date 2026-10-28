@@ -1,91 +1,87 @@
-// src/components/AboutSection.tsx
-import React from "react";
-
-type Stat = {
-  value: string;
-  label: string;
-  caption?: string;
-};
-
-const AboutSection = () => {
-  const stats: Stat[] = [
-    { value: "BI", label: "Dashboards, models, and reporting products" },
-    { value: "AI", label: "Experiments with automation and assisted analysis" },
-    { value: "Cloud", label: "Azure-first pipelines and practical data workflows" },
-  ];
-
+import { useEffect, useRef, useState } from "react";
+export default function AboutSection() {
+  const statement = useRef<HTMLParagraphElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    if (statement.current) observer.observe(statement.current);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Heading */}
-        <header className="text-center mb-12 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold">About</h2>
-          <div className="w-24 h-1 bg-gradient-accent mx-auto rounded-full mt-4" />
-          <p className="mt-4 text-muted-foreground">
-            Practical data work, automation, and AI curiosity
-          </p>
-        </header>
-
-        {/* Content */}
-        <div className="grid md:grid-cols-12 gap-10 items-start">
-          {/* Left: copy */}
-          <div className="md:col-span-7 space-y-6 reveal">
-            <div className="card-glass rounded-xl p-6">
-              <p className="font-semibold text-primary">
-                I enjoy building clean, useful data products: the kind of dashboards, pipelines, and small automations that make people ask better questions.
-
+    <section
+      id="about"
+      className="section about-section"
+      aria-labelledby="about-title"
+    >
+      <div className="page-width">
+        <div className="about-heading">
+          <h2 id="about-title">
+            Finance taught me to ask why.
+            <br />
+            Engineering lets me build it.
+          </h2>
+        </div>
+        <div className="about-layout">
+          <div className="about-perspective">
+            <p
+              ref={statement}
+              className={`principle ${visible ? "is-visible" : ""}`}
+              aria-label="Understand the business. Build what moves it forward."
+            >
+              {["Understand the business.", "Build what moves it forward."].map(
+                (line, row) => (
+                  <span
+                    className="principle-line"
+                    key={line}
+                    aria-hidden="true"
+                  >
+                    {line.split(" ").map((word, i) => (
+                      <span
+                        key={word}
+                        style={{ transitionDelay: `${(row * 4 + i) * 90}ms` }}
+                      >
+                        {word}{" "}
+                      </span>
+                    ))}
+                  </span>
+                ),
+              )}
+            </p>
+            <div className="international-note">
+              <span>International perspective</span>
+              <p>
+                Professional experience in Canada and Latin America.
+                <br />
+                Education across Canada, Spain, and Chile.
               </p>
             </div>
-
-            <p className="leading-relaxed text-foreground/90">
-              I’m Sebastian, a BI Developer / BI Engineer who likes the space where analytics, software, and business context meet. Most of my work lives around Power BI, SQL, Azure, Python, and automation.
-            </p>
-
-            <p className="leading-relaxed text-foreground/90">
-              I’m also genuinely interested in AI: not as decoration, but as a way to speed up analysis, generate better workflows, improve documentation, and make data products more useful.
-            </p>
-
-            <p className="leading-relaxed text-foreground/90">
-              My finance and credit-risk background still shows up in how I think: clear definitions, controls, risk, and business impact matter as much as the technical build.
-            </p>
-
-             <p className="leading-relaxed text-foreground/90">
-              This site is a snapshot of what I like to build and where I’m heading: BI engineering, analytics automation, and AI-assisted data experiences.
-            </p>
-            
-
-            {/* Stats */}
-            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              {stats.map((s) => (
-                <li key={s.label} className="card-glass rounded-xl p-4 text-center">
-                  <div className="text-3xl md:text-4xl font-extrabold text-gradient">
-                    {s.value}
-                  </div>
-                  <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
-                  {s.caption && (
-                    <div className="mt-1 text-xs text-muted-foreground/70">
-                      {s.caption}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
           </div>
-
-          {/* Right: portrait */}
-          <div className="md:col-span-5 reveal">
-            <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
-              <img
-                src="/profile.png"
-                alt="Sebastian Gonzalez portrait"
-                className="w-full h-[420px] object-cover object-[center_28%]"
-              />
-            </div>
+          <div className="about-copy">
+            <p>
+              I started in finance. Credit risk and lending taught me to ask
+              what’s behind a number and what someone needs to do with it.
+            </p>
+            <p>
+              That curiosity took me into data, automation and AI. I like being
+              able to talk through a problem with a business team, then get into
+              the code and build the solution.
+            </p>
+            <p>
+              I’ve worked across Canada and Latin America, in English and
+              Spanish. Different teams, different perspectives. It’s made me a
+              better builder.
+            </p>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}

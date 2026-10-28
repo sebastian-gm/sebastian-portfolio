@@ -1,0 +1,163 @@
+WEBVTT
+
+00:00:01.246 --> 00:00:02.582
+You open your banking app.
+
+00:00:03.104 --> 00:00:04.520
+And there it is — a charge you
+
+00:00:04.567 --> 00:00:05.461
+don't recognize.
+
+00:00:07.151 --> 00:00:08.823
+In our bank's data, it's the number one
+
+00:00:08.870 --> 00:00:12.155
+complaint — over twelve thousand cases.
+
+00:00:12.492 --> 00:00:14.025
+Fifteen days to resolve.
+
+00:00:15.360 --> 00:00:17.589
+Fewer than half fixed on the first contact.
+
+00:00:19.098 --> 00:00:20.329
+Customers wait on hold.
+
+00:00:20.549 --> 00:00:22.384
+Agents ask the same questions again.
+
+00:00:22.674 --> 00:00:23.545
+Nobody wins.
+
+00:00:26.165 --> 00:00:27.337
+Introducing Aclara.
+
+00:00:27.454 --> 00:00:28.951
+Clarity, in every transaction.
+
+00:00:31.711 --> 00:00:34.033
+Just ask — in Spanish or Portuguese.
+
+00:00:34.427 --> 00:00:36.715
+Aclara finds the exact charge and explains it,
+
+00:00:36.749 --> 00:00:38.398
+in plain words, in seconds.
+
+00:00:41.388 --> 00:00:42.108
+Not yours?
+
+00:00:42.444 --> 00:00:45.208
+Aclara prepares the dispute — but nothing happens
+
+00:00:45.254 --> 00:00:47.692
+until you confirm it, with a one-time code.
+
+00:00:48.528 --> 00:00:50.734
+Then it checks the records before it ever
+
+00:00:50.792 --> 00:00:51.663
+says "done".
+
+00:00:54.837 --> 00:00:56.311
+And when a person should take over —
+
+00:00:56.485 --> 00:00:59.249
+fraud, a stolen card, or simply "let me
+
+00:00:59.295 --> 00:01:01.989
+talk to someone" — Aclara hands off with
+
+00:01:02.070 --> 00:01:03.324
+everything already checked.
+
+00:01:04.160 --> 00:01:05.472
+No one repeats their story.
+
+00:01:08.585 --> 00:01:09.804
+Here's the idea behind it.
+
+00:01:10.024 --> 00:01:11.522
+The AI understands language.
+
+00:01:11.557 --> 00:01:14.053
+Code makes every decision — the bank's rules,
+
+00:01:14.169 --> 00:01:15.841
+the confirmation, the check.
+
+00:01:16.061 --> 00:01:17.536
+The model never has the keys.
+
+00:01:19.645 --> 00:01:21.026
+And it's built the way a bank would
+
+00:01:21.050 --> 00:01:24.033
+build it: isolated data for every customer, every
+
+00:01:24.091 --> 00:01:27.238
+action verified, and more than seventeen hundred automated
+
+00:01:27.273 --> 00:01:27.911
+tests.
+
+00:01:30.120 --> 00:01:32.767
+We tested it on one hundred unseen cases,
+
+00:01:33.057 --> 00:01:34.764
+against a rules-only system.
+
+00:01:34.985 --> 00:01:38.038
+Aclara got eighty-eight right, versus sixty-two.
+
+00:01:38.375 --> 00:01:40.987
+It resolved more cases safely on its own,
+
+00:01:41.242 --> 00:01:42.856
+sent the right ones to a person —
+
+00:01:42.972 --> 00:01:45.619
+and made zero materially wrong decisions.
+
+00:01:45.910 --> 00:01:48.011
+For a fraction of a cent per conversation.
+
+00:01:50.366 --> 00:01:51.446
+Then we tried to trick it.
+
+00:01:51.667 --> 00:01:54.430
+A customer types a fake "yes, I confirm"
+
+00:01:54.453 --> 00:01:55.312
+into the chat.
+
+00:01:55.835 --> 00:01:58.435
+A plain AI agent, same model, filed the
+
+00:01:58.482 --> 00:02:00.409
+dispute — both times.
+
+00:02:01.036 --> 00:02:03.579
+Aclara waited for the real button and code.
+
+00:02:04.298 --> 00:02:05.065
+Every time.
+
+00:02:07.378 --> 00:02:08.841
+Clearer answers for customers.
+
+00:02:09.015 --> 00:02:10.815
+Fewer repeat contacts for the bank.
+
+00:02:11.151 --> 00:02:13.009
+And control that stays where it belongs —
+
+00:02:13.183 --> 00:02:13.845
+in code.
+
+00:02:16.535 --> 00:02:17.034
+Aclara.
+
+00:02:17.080 --> 00:02:17.916
+Try it live today.

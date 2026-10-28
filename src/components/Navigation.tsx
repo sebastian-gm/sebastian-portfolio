@@ -1,150 +1,116 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
-
-const Navigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // NEW: read initial state from <html class="dark">
-  const [isDark, setIsDark] = useState<boolean>(() =>
-    typeof document !== 'undefined'
-      ? document.documentElement.classList.contains('dark')
-      : true
-  );
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'education', label: 'Education' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import * as Dialog from "@radix-ui/react-dialog";
+import { PiArrowUpRight, PiX } from "react-icons/pi";
+const links = [
+  ["Experience", "experience"],
+  ["Selected work", "projects"],
+  ["About me", "about"],
+  ["Education", "education"],
+];
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const { pathname } = useLocation();
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPos = window.scrollY + 100;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPos) {
-          setActiveSection(navItems[i].id);
-          break;
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // NEW: ensure state stays in sync if class changes elsewhere
-  useEffect(() => {
-    const html = document.documentElement;
-    const observer = new MutationObserver(() => {
-      setIsDark(html.classList.contains('dark'));
+    setActive("");
+    if (pathname !== "/") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-20% 0px -60% 0px" },
+    );
+    links.forEach(([, id]) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
     });
-    observer.observe(html, { attributes: true, attributeFilter: ['class'] });
     return () => observer.disconnect();
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
-
-  // NEW: solid toggle that updates <html> + localStorage
-  const toggleTheme = () => {
-    const html = document.documentElement;
-    const next = !html.classList.contains('dark');
-    html.classList.toggle('dark', next);
-    localStorage.setItem('theme', next ? 'dark' : 'light');
-    setIsDark(next);
-  };
-
+  }, [pathname]);
+  const href = (id: string) => (pathname === "/" ? `#${id}` : `/#${id}`);
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'backdrop-blur-lg bg-background/80 border-b border-glass-border' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-xl font-bold text-gradient hover:opacity-80 transition-opacity"
-            >
-              SG
-            </button>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`nav-link px-3 py-2 text-sm font-medium transition-colors ${
-                    activeSection === item.id ? 'active text-primary' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              aria-pressed={isDark}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="p-2 rounded-lg bg-glass-bg border border-glass-border hover:bg-muted transition-colors"
-            >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-lg bg-glass-bg border border-glass-border hover:bg-muted transition-colors"
-                aria-label="Toggle menu"
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <header className="nav-shell">
+        <nav className="site-nav page-width" aria-label="Main navigation">
+          <a
+            href={href("home")}
+            className="wordmark"
+            aria-label="Sebastian Gonzalez, home"
+          >
+            SG
+          </a>
+          <div className="desktop-nav">
+            {links.map(([label, id]) => (
+              <a
+                key={id}
+                href={href(id)}
+                aria-current={active === id ? "location" : undefined}
               >
-                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-lg border-b border-glass-border">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                  activeSection === item.id
-                    ? 'text-primary bg-primary/10'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
-              >
-                {item.label}
-              </button>
+                {label}
+              </a>
             ))}
           </div>
-        </div>
-      )}
-    </nav>
+          <div className="nav-actions">
+            <a
+              className="nav-resume"
+              href="/resumes/Sebastian_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Resume <PiArrowUpRight aria-hidden="true" />
+            </a>
+            <Dialog.Root open={open} onOpenChange={setOpen}>
+              <Dialog.Trigger asChild>
+                <button className="menu-trigger" aria-label="Open navigation">
+                  <span />
+                  <span />
+                </button>
+              </Dialog.Trigger>
+              <Dialog.Portal>
+                <Dialog.Overlay className="menu-overlay" />
+                <Dialog.Content
+                  className="mobile-menu"
+                  aria-describedby="menu-description"
+                >
+                  <Dialog.Title className="mobile-menu-title">
+                    Sebastian Gonzalez
+                  </Dialog.Title>
+                  <Dialog.Description id="menu-description">
+                    AI, automation & data.
+                  </Dialog.Description>
+                  <Dialog.Close asChild>
+                    <button
+                      className="icon-button menu-close"
+                      aria-label="Close navigation"
+                    >
+                      <PiX />
+                    </button>
+                  </Dialog.Close>
+                  <nav aria-label="Mobile navigation">
+                    {[...links, ["Let’s connect", "contact"]].map(
+                      ([label, id]) => (
+                        <a
+                          key={id}
+                          href={href(id)}
+                          onClick={() => setOpen(false)}
+                        >
+                          {label}
+                          <PiArrowUpRight aria-hidden="true" />
+                        </a>
+                      ),
+                    )}
+                  </nav>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
+          </div>
+        </nav>
+      </header>
+    </>
   );
-};
-
-export default Navigation;
+}

@@ -1,35 +1,27 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
-
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
+import { Link } from "react-router-dom";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center card-glass rounded-lg p-12 max-w-md mx-4">
-        <div className="text-6xl mb-6 text-gradient font-bold">404</div>
-        <h1 className="text-2xl font-bold mb-4">Page Not Found</h1>
-        <p className="text-muted-foreground mb-8">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <Button asChild className="btn-hero">
-          <a href="/">
-            <Home className="w-4 h-4 mr-2" />
-            Return to Home
-          </a>
-        </Button>
-      </div>
-    </div>
+    <>
+      <Navigation />
+      <main
+        id="main"
+        className="case-main page-width min-h-[75vh]"
+        tabIndex={-1}
+      >
+        <div className="py-16">
+          <p className="eyebrow">404 / Page not found</p>
+          <h1 className="text-4xl mt-4 mb-6">
+            Let’s get you back to the work.
+          </h1>
+          <p className="muted mb-8">This page has moved or does not exist.</p>
+          <Link to="/" className="button button-primary">
+            Back to the portfolio
+          </Link>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
-};
-
-export default NotFound;
+}

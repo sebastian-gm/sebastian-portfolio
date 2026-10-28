@@ -1,56 +1,83 @@
-const EducationSection = () => {
-  const education = [
-    {
-      school: 'Douglas College',
-      degree: 'Postgraduate Diploma in Computer and Information Systems, Data Analytics',
-      country: 'Canada',
-      period: '2022–2023'
-    },
-    {
-      school: 'European University of Madrid',
-      degree: 'Master of Business Administration (MBA)',
-      country: 'Spain',
-      period: '2016–2017'
-    },
-    {
-      school: 'Andres Bello University',
-      degree: 'BSc in Economics, Finance Concentration',
-      country: 'Chile',
-      period: '2012–2016'
-    }
-  ];
+import { usePointerSurface } from "@/hooks/use-pointer-surface";
 
+const education = [
+  {
+    country: "Spain",
+    type: "Master’s degree",
+    degree: "MBA",
+    school: "European University of Madrid",
+    detail: "Business administration",
+    className: "education-business",
+  },
+  {
+    country: "Canada",
+    type: "Postgraduate diploma",
+    degree: "Data analytics",
+    school: "Douglas College",
+    detail: "Computer & information systems",
+    className: "education-data",
+  },
+  {
+    country: "Chile",
+    type: "Bachelor’s degree",
+    degree: "Business & economics",
+    school: "Andres Bello University",
+    detail: "Finance specialization",
+    className: "education-finance",
+  },
+  {
+    country: "United States",
+    type: "Master’s admission",
+    degree: "Computer science",
+    school: "Georgia Institute of Technology",
+    detail: "MS starts Spring 2027",
+    className: "education-next",
+  },
+];
+
+function EducationCard({ item }: { item: (typeof education)[number] }) {
+  const surface = usePointerSurface<HTMLElement>();
   return (
-    <section id="education" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16 reveal">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Education</h2>
-          <div className="w-20 h-1 bg-gradient-accent mx-auto rounded-full"></div>
-        </div>
+    <article
+      {...surface}
+      tabIndex={0}
+      aria-labelledby={`${item.className}-degree`}
+      className={`education-card ${item.className}`}
+    >
+      <div className="education-top">
+        <span>{item.country}</span>
+        {item.className === "education-next" && (
+          <span className="admission-badge">Admitted</span>
+        )}
+      </div>
+      <div className="education-degree">
+        <p>{item.type}</p>
+        <h3 id={`${item.className}-degree`}>{item.degree}</h3>
+      </div>
+      <div className="education-school">
+        <p>{item.school}</p>
+        <span>{item.detail}</span>
+      </div>
+    </article>
+  );
+}
 
-        <div className="space-y-6">
-          {education.map((edu, index) => (
-            <div key={index} className="reveal card-glass rounded-lg p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                    <div>
-                      <h3 className="text-xl font-semibold">{edu.school}</h3>
-                      <p className="text-primary font-medium">{edu.degree}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-muted-foreground font-medium">{edu.country}</p>
-                      <p className="text-sm text-muted-foreground">{edu.period}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+export default function EducationSection() {
+  return (
+    <section
+      id="education"
+      className="section page-width education-section"
+      aria-labelledby="education-title"
+    >
+      <div className="section-heading education-heading">
+        <h2 id="education-title">Always learning.</h2>
+        <p>My education, from business to tech.</p>
+      </div>
+      <div className="education-grid">
+        {education.map((item) => (
+          <EducationCard key={item.degree} item={item} />
+        ))}
       </div>
     </section>
   );
-};
-
-export default EducationSection;
+}
